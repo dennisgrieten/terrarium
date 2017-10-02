@@ -10,4 +10,10 @@ public abstract class Organisme {
     public void setLevenskracht(int levenskracht) {
         this.levenskracht = levenskracht;
     }
+
+	public int getLevenskracht() {
+		return levenskracht;
+	}
+    
+    
 }
