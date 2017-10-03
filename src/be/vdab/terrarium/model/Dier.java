@@ -28,4 +28,20 @@ public abstract class Dier extends Organisme {
         super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
     	slachtoffer.sterf();
 	}
+	
+	public void ageer() {
+		 
+	}
+	
+	public void beweeg() {
+		
+	}
+	
+	public void kanBewegen() {
+		
+	}
+	
+	public void magicJump() {
+		
+	}
 }
