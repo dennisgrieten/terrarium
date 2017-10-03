@@ -70,6 +70,11 @@ public enum Terrarium {
 		legeCellen.remove(cel);
 	}
 
+	public void plaatsOrganisme(Organisme organisme, ArrayList<Cel> legeBuren) {
+		int n = random.nextInt(legeBuren.size());
+		legeBuren.get(n).setOrganisme(organisme);
+	}
+
 	public void voegNieuwePlantenToe() {
 		Collections.shuffle(legeCellen);
 		for (int i = 0; i < AANTAL_NIEUWE_PLANTEN_PER_DAG; i++) {
