@@ -164,29 +164,6 @@ public enum Terrarium {
     public void verhoogBabyHerbivoren() {
     	aantalBabyHerbivoren++;
     }
-    
-//  public void beweeg(int x, int y) {
-//	if (!beegNaarBovenOK(x, y)) {
-//		if (!beweegNaarOnderOK) {
-//			if (!beweegNaarLinksOk) {
-//				if (!beweegNaarRechtsOK) {
-//					magicJump();
-//				}
-//			}
-//		}
-//	}
-//		
-//		
-//}
-
-//if (((x - 1) < 0) || ((y + 1) > DIMENSIE)) {
-//
-//}
-//if ((y + 1) > DIMENSIE) {
-//magicJump();
-//} else {
-//
-//}
 
 
 	boolean beweegNaarBovenOK(int x, int y) {
