@@ -145,45 +145,110 @@ public enum Terrarium {
         }
         return output.toString();
     }
-
-//  public void beweeg(int x, int y) {
-//	if (!beegNaarBovenOK(x, y)) {
-//		if (!beweegNaarOnderOK) {
-//			if (!beweegNaarLinksOk) {
-//				if (!beweegNaarRechtsOK) {
-//					magicJump();
-//				}
-//			}
-//		}
-//	}
-//		
-//		
-//}
-
-//if (((x - 1) < 0) || ((y + 1) > DIMENSIE)) {
-//
-//}
-//if ((y + 1) > DIMENSIE) {
-//magicJump();
-//} else {
-//
-//}
+    
+    public Cel getCelInMatrix(int x, int y) {
+    	if (x < 0 || x >= DIMENSIE || y < 0 || y >= DIMENSIE) {
+    		throw new IllegalArgumentException();
+    	}
+    	return matrix[x][y];
+    }
 
 
-	boolean beweegNaarBovenOK(int x, int y) {
+    void beweeg(int x, int y) {
+    	if (!beweegNaarBovenOK(x, y)) {
+    		if (!beweegNaarOnderOK(x, y)) {
+    			if (!beweegNaarLinksOK(x, y)) {
+    				if (!beweegNaarRechtsOK(x, y)) {
+    					doMagicJump(x, y);
+    				}
+    			}
+    		}
+    	}
+    }
+    
+    boolean beweegNaarBovenOK(int x, int y) {
+    	Cel celVan = matrix[x][y];
+    	if (!isCelVanValid(celVan)) {
+			return false;
+		}
+		// is er plaats boven?
 		if (x - 1 < 0) {
 			return false;
 		}
+		Cel celNaar = matrix[x - 1][y];
+		// is cel erboven reeds bezet?
+		if (celNaar.getOrganisme() != null) {
+			return false;
+		}
 		matrix[x - 1][y] = matrix[x][y];
-		Cel celNaar = (Cel) (matrix[x - 1][y]);
-		celNaar.setOrganisme(null);
-		Cel celVan = (Cel) (matrix[x][y]);
-		celVan.setOrganisme(celNaar.getOrganisme());
+		celNaar.setOrganisme(celVan.getOrganisme());
+		celVan.setOrganisme(null);
 		return true;
 	}
 	
-	private void magicJump() {
-		
+    private boolean isCelVanValid(Cel cel) {
+		if (cel.getOrganisme() == null) {
+			return false;
+		}
+		return true;
+    }
+
+    boolean beweegNaarOnderOK(int x, int y) {
+    	Cel celVan = matrix[x][y];
+    	if (!isCelVanValid(celVan)) {
+			return false;
+		}
+		if (x + 1 >= DIMENSIE) {
+			return false;
+		}
+		Cel celNaar = matrix[x + 1][y];
+		if (celNaar.getOrganisme() != null) {
+			return false;
+		}
+
+		matrix[x + 1][y] = matrix[x][y];
+		celNaar.setOrganisme(celVan.getOrganisme());
+		celVan.setOrganisme(null);
+		return true;
+	}
+	
+	boolean beweegNaarLinksOK(int x, int y) {
+		if (y - 1 < 0) {
+			return false;
+		}
+		Cel celNaar = matrix[x][y - 1];
+		if (celNaar.getOrganisme() != null) {
+			return false;
+		}
+
+		Cel celVan = matrix[x][y];
+		matrix[x][y - 1] = matrix[x][y];
+		celNaar.setOrganisme(celVan.getOrganisme());
+		celVan.setOrganisme(null);
+		return true;
+	}
+	
+	boolean beweegNaarRechtsOK(int x, int y) {
+		if (y + 1 >= DIMENSIE) {
+			return false;
+		}
+		Cel celNaar = matrix[x][y + 1];
+		if (celNaar.getOrganisme() != null) {
+			return false;
+		}
+
+		Cel celVan = matrix[x][y];
+		matrix[x][y + 1] = matrix[x][y];
+		celNaar.setOrganisme(celVan.getOrganisme());
+		celVan.setOrganisme(null);
+		return true;
+	}
+	
+	private void doMagicJump(int x, int y) {
+        int n = random.nextInt(legeCellen.size());
+        Cel cel = matrix[x][y];
+        legeCellen.get(n).setOrganisme(cel.getOrganisme());
+        legeCellen.remove(n);
 	}
 
 }    
