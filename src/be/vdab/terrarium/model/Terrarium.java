@@ -53,4 +53,16 @@ public enum Terrarium {
             legeCellen.remove(n);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                output.append(matrix[i][j].toString());
+            }
+            output.append("\n");
+        }
+        return output.toString();
+    }
 }
