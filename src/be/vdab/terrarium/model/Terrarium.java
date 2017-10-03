@@ -82,16 +82,12 @@ public enum Terrarium {
     	legeCellen.remove(cel);
     }
 
-<<<<<<< HEAD
     public void plaatsOrganisme(Organisme organisme, ArrayList<Cel> legeBuren) {
         int n = random.nextInt(legeBuren.size());
         legeBuren.get(n).setOrganisme(organisme);
     }
 
-    public void voegNieuwePlantenToe(int aantal) {
-=======
     public void voegNieuwePlantenToe() {
->>>>>>> branch 'master' of https://github.com/dennisgrieten/terrarium
     	Collections.shuffle(legeCellen);
     	for (int i = 0; i < AANTAL_NIEUWE_PLANTEN_PER_DAG; i++) {
     		if (legeCellen.isEmpty()) break;
@@ -173,7 +169,6 @@ public enum Terrarium {
     public void verhoogBabyHerbivoren() {
     	aantalBabyHerbivoren++;
     }
-<<<<<<< HEAD
 
  	public void doMagicJump(int x, int y) {
         int n = random.nextInt(legeCellen.size());
@@ -182,7 +177,5 @@ public enum Terrarium {
         legeCellen.remove(n);
 	}
 
-=======
->>>>>>> branch 'master' of https://github.com/dennisgrieten/terrarium
 }    
 

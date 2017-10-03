@@ -2,8 +2,6 @@ package be.vdab.terrarium.model;
 
 import java.util.ArrayList;
 
-import be.vdab.terrarium.util.DierException;
-
 public abstract class Dier extends Organisme {
     private boolean heeftGeageerd;
 
@@ -39,11 +37,8 @@ public abstract class Dier extends Organisme {
     	this.setHeeftGeageerd(true);
 	}
 	
-<<<<<<< HEAD
-	public abstract void ageer();
-=======
+	public abstract void ageer();	
 	
->>>>>>> branch 'master' of https://github.com/dennisgrieten/terrarium
 
 
     public void beweeg() {
