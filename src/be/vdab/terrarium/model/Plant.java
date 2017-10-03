@@ -6,5 +6,10 @@ public class Plant extends Organisme {
 	public String toString() {
 		return "P";
 	}
+
+	@Override
+	public void ageer() {
+		// Niets.
+	}
 	
 }
