@@ -40,19 +40,68 @@ public enum Terrarium {
                 legeCellen.add(matrix[i][j]);
             }
         }
+    }
 
+    public void initStartOrganismen() {
         // vul matrix met start organismen
         plaatsOrganisme(startOrganismen);
     }
 
+
     // plaats organismen uit een array op random plaatsen in de matrix
-    private void plaatsOrganisme(Organisme[] organismen) {
+    public void plaatsOrganisme(Organisme[] organismen) {
         for (Organisme organisme : organismen) {
             int n = random.nextInt(legeCellen.size());
             legeCellen.get(n).setOrganisme(organisme);
             legeCellen.remove(n);
         }
     }
+
+    // voor test
+    public int getAantalPlanten() {
+        int aantal = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                Organisme organisme = matrix[i][j].getOrganisme();
+                if (organisme != null && organisme instanceof Plant) {
+                    aantal++;
+                }
+            }
+        }
+        return aantal;
+    }
+
+    // voor test
+    public int getAantalHerbivoren() {
+        int aantal = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                Organisme organisme = matrix[i][j].getOrganisme();
+                if (organisme != null && organisme instanceof Herbivoor) {
+                    aantal++;
+                }
+            }
+        }
+        return aantal;
+    }
+
+    // voor test
+    public int getAantalCarnivoren() {
+        int aantal = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                Organisme organisme = matrix[i][j].getOrganisme();
+                if (organisme != null && organisme instanceof Carnivoor) {
+                    aantal++;
+                }
+            }
+        }
+        return aantal;
+    }
+
 
     @Override
     public String toString() {

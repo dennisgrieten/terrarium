@@ -8,6 +8,7 @@ public class Controller {
     }
 
     public Terrarium getTerrarium() {
+        Terrarium.INSTANCE.initStartOrganismen();
         return Terrarium.INSTANCE;
     }
 }
