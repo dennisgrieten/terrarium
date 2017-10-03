@@ -1,5 +1,7 @@
 package be.vdab.terrarium.model;
 
+import java.util.Objects;
+
 public class Cel {
     private final int x;
     private final int y;
@@ -27,23 +29,19 @@ public class Cel {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Cel cel = (Cel) o;
-
-        if (x != cel.x) return false;
-        if (y != cel.y) return false;
-        return organisme != null ? organisme.equals(cel.organisme) : cel.organisme == null;
+    public boolean equals(Object obj) {
+    	if (this == obj) return true;
+    	if (obj instanceof Cel) {
+    		Cel other = (Cel)obj;
+    		return x == other.x && y == other.y && Objects.equals(organisme, other.organisme);
+    	} else {
+    		return false;
+    	}
     }
 
     @Override
     public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
-        result = 31 * result + (organisme != null ? organisme.hashCode() : 0);
-        return result;
+        return Objects.hash(x,y,organisme);
     }
 
     @Override

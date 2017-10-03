@@ -3,6 +3,7 @@ package be.vdab.terrarium.model;
 public abstract class Organisme {
 	
     private int levenskracht;
+    private Cel cel;
     
     public Organisme() {
         setLevenskracht(1);
@@ -17,15 +18,13 @@ public abstract class Organisme {
 	}
 	
 	public Cel getCel() {
-		Terrarium terrarium = Terrarium.INSTANCE;
-		Cel[][] matrix = terrarium.getMatrix();
-		for (int i = 0; i < terrarium.getHoogte(); i++ ) {
-			for (int j = 0; j < terrarium.getBreedte(); j++ ) {
-				Cel cel = matrix[i][j];
-				if (this == cel.getOrganisme()) return cel;
-			}
-		}
-		return null;
+		return cel;
+	}
+	
+	public void setCel(Cel cel) {
+		this.cel.setOrganisme(null);
+		this.cel = cel;
+		cel.setOrganisme(this);
 	}
 	
 	public Cel getRechterBuurCel() {
