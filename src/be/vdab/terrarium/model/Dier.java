@@ -17,7 +17,7 @@ public abstract class Dier extends Organisme {
 		this.heeftActieOndergaan = heeftActieOndergaan;
 	}
 
-	public void eet() throws NullPointerException {
+	public void eet() {
         Cel dezeCel = super.getCel();
         Organisme slachtoffer = getRechterBuurCel().getOrganisme();
 
