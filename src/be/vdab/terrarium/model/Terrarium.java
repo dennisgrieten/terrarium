@@ -103,6 +103,24 @@ public enum Terrarium {
     	voegNieuweHerbivorenToe(aantalBabyHerbivoren);
     }
     
+    private void dagIteratie(String letter) {
+    	for (int y = 0; y < getHoogte(); y++) {
+    		for (int x = 0; x < getBreedte(); x++) {
+        		if ( matrix[y][x].toString().equals(letter) ) {
+        			matrix[y][x].getOrganisme().ageer();
+        		}
+        	}	
+    	}
+    }
+    
+    
+    public void dagIteratie() {
+    	voegNieuwePlantenToe(2);	// TODO proper
+    	dagIteratie("H");
+    	dagIteratie("C");
+    	voegBabyHerbivorenToe();
+    }
+    
     // voor test
     public int getAantalPlanten() {
         int aantal = 0;
@@ -178,9 +196,6 @@ public enum Terrarium {
 		return true;
 	}
 	
-	private void magicJump() {
-		
-	}
 
 
 	

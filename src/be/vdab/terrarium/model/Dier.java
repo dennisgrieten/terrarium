@@ -42,7 +42,7 @@ public abstract class Dier extends Organisme {
     	this.setHeeftActieOndergaan(true);
 	}
 	
-	public abstract void ageer(); 
+	
 		
 	
 	

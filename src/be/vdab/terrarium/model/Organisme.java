@@ -7,7 +7,7 @@ public abstract class Organisme {
     public Organisme() {
         setLevenskracht(1);
     }
-
+    public abstract void ageer(); 
     public void setLevenskracht(int levenskracht) {
         this.levenskracht = levenskracht;
     }

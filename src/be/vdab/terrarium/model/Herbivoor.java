@@ -7,7 +7,7 @@ public class Herbivoor extends Dier {
 		String organisme = getRechterBuurCel().toString();
 		switch (organisme) {
 		case "P":
-			eet();
+			super.eet();
 			break;
 
 		case "H":
