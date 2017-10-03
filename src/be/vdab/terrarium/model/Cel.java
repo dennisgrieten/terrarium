@@ -12,10 +12,23 @@ public class Cel {
 
     public void setOrganisme(Organisme organisme) {
         this.organisme = organisme;
+        this.organisme.setCel(this);    // megeven van pointer naar deze cel
+    }
+
+    public void unSetOrganisme() {
+        this.organisme = null;
     }
 
     public Organisme getOrganisme() {
         return organisme;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     @Override

@@ -42,6 +42,7 @@ public enum Terrarium {
         }
     }
 
+    // aparte init voor startorganismen om zo een leeg veld te krijgen
     public void initStartOrganismen() {
         // vul matrix met start organismen
         plaatsOrganisme(startOrganismen);

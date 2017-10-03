@@ -2,6 +2,7 @@ package be.vdab.terrarium.model;
 
 public abstract class Organisme {
     private int levenskracht;
+    private Cel cel = null; // pointer naar de cel waar het organisme zich in bevindt
 
     public Organisme() {
         setLevenskracht(1);
@@ -14,6 +15,16 @@ public abstract class Organisme {
 	public int getLevenskracht() {
 		return levenskracht;
 	}
-    
-    
+
+	public void setCel(Cel cel) {
+        this.cel = cel;
+    }
+
+    public Cel getCel() {
+        return this.cel;
+    }
+
+    public void sterf() {
+        this.cel.unSetOrganisme();
+    }
 }
