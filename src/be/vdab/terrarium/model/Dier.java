@@ -6,4 +6,13 @@ public abstract class Dier extends Organisme {
     public Dier() {
         this.heeftActieOndergaan = false;
     }
+
+	public boolean heeftActieOndergaan() {
+		return heeftActieOndergaan;
+	}
+
+	public void setHeeftActieOndergaan(boolean heeftActieOndergaan) {
+		this.heeftActieOndergaan = heeftActieOndergaan;
+	}
+	
 }
