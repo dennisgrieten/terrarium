@@ -1,11 +1,11 @@
 package be.vdab.terrarium.controller;
 
-import be.vdab.terrarium.model.Herbivoor;
 import be.vdab.terrarium.model.Organisme;
 import be.vdab.terrarium.model.Terrarium;
 
 public class Controller {
-	Terrarium terra = Terrarium.INSTANCE;
+	
+	private Terrarium terra = Terrarium.INSTANCE;
 
 	public Terrarium getTerrarium() {
 		return Terrarium.INSTANCE;

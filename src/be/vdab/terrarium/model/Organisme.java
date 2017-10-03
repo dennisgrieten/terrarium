@@ -45,4 +45,46 @@ public abstract class Organisme {
 		return getRechterBuurCel().getOrganisme();
 	}
 	
+	public Cel getLinkerBuurCel() {
+		int x = cel.getX();
+		int y = cel.getY();
+		if (x < Terrarium.INSTANCE.getBreedte() - 1) {
+			return Terrarium.INSTANCE.getMatrix()[y][x-1];
+		} else {
+			return null;
+		}
+	}
+
+	public Organisme getLinkerBuur() {
+		return getLinkerBuurCel().getOrganisme();
+	}
+	
+	public Cel getBovenBuurCel() {
+		int x = cel.getX();
+		int y = cel.getY();
+		if (y < Terrarium.INSTANCE.getHoogte() - 1) {
+			return Terrarium.INSTANCE.getMatrix()[y-1][x];
+		} else {
+			return null;
+		}
+	}
+
+	public Organisme getBovenBuur() {
+		return getBovenBuurCel().getOrganisme();
+	}
+	
+	public Cel getOnderBuurCel() {
+		int x = cel.getX();
+		int y = cel.getY();
+		if (y < Terrarium.INSTANCE.getHoogte() - 1) {
+			return Terrarium.INSTANCE.getMatrix()[y+1][x];
+		} else {
+			return null;
+		}
+	}
+
+	public Organisme getOnderBuur() {
+		return getBovenBuurCel().getOrganisme();
+	}
+	
 }
