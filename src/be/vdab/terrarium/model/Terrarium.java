@@ -28,7 +28,7 @@ public enum Terrarium {
 
     Terrarium() {
         matrix = new Cel[DIMENSIE][DIMENSIE];
-        legeCellen = new ArrayList<>();
+        legeCellen = new ArrayList<Cel>();
         initMatrix();
     }
 
