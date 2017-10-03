@@ -41,5 +41,5 @@ public abstract class Organisme {
 	public Organisme getRechterBuur() {
 		return getRechterBuurCel().getOrganisme();
 	}
-
+	
 }
