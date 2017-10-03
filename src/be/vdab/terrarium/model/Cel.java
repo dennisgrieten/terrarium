@@ -11,14 +11,6 @@ public class Cel {
         this.x = x;
         this.y = y;
     }
-
-    public int getX() {
-    	return x;
-    }
-    
-    public int getY() {
-    	return y;
-    }
     
     public void setOrganisme(Organisme organisme) {
         this.organisme = organisme;
