@@ -1,7 +1,5 @@
 package be.vdab.terrarium.model;
 
-import be.vdab.terrarium.util.DierException;
-
 public abstract class Dier extends Organisme {
     private boolean heeftGeageerd;
 
@@ -36,9 +34,6 @@ public abstract class Dier extends Organisme {
     	slachtoffer.sterf();
     	this.setHeeftGeageerd(true);
 	}
-	
-	
-
 
 	
 	protected void magicJump() {
