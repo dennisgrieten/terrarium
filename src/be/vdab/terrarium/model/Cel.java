@@ -1,40 +1,62 @@
 package be.vdab.terrarium.model;
 
+import java.util.Objects;
+
 public class Cel {
-    private final int x;
-    private final int y;
-    private Organisme organisme = null;
 
-    public Cel(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+	private final int y;
+	private final int x;
 
-    public void setOrganisme(Organisme organisme) {
-        this.organisme = organisme;
-    }
+	private Organisme organisme = null;
 
-    public Organisme getOrganisme() {
-        return organisme;
-    }
+	public Cel(int y, int x) {
+		this.y = y;
+		this.x = x;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	public void setOrganisme(Organisme organisme) {
+		this.organisme = organisme;
+		this.organisme.setCel(this); // megeven van pointer naar deze cel
+	}
 
-        Cel cel = (Cel) o;
+	public void unSetOrganisme() {
+		this.organisme = null;
+	}
 
-        if (x != cel.x) return false;
-        if (y != cel.y) return false;
-        return organisme != null ? organisme.equals(cel.organisme) : cel.organisme == null;
-    }
+	public Organisme getOrganisme() {
+		return organisme;
+	}
 
-    @Override
-    public int hashCode() {
-        int result = x;
-        result = 31 * result + y;
-        result = 31 * result + (organisme != null ? organisme.hashCode() : 0);
-        return result;
-    }
+	public int getY() {
+		return y;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj instanceof Cel) {
+			Cel other = (Cel) obj;
+			return y == other.y && x == other.x && Objects.equals(organisme, other.organisme);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(x, y, organisme);
+	}
+
+	@Override
+	public String toString() {
+		if (this.organisme != null) {
+			return organisme.toString();
+		}
+		return ".";
+	}
 }
