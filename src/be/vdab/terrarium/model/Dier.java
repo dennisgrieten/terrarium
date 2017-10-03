@@ -17,14 +17,16 @@ public abstract class Dier extends Organisme {
 		this.heeftActieOndergaan = heeftActieOndergaan;
 	}
 
-	public void eet(Organisme slachtoffer) throws NullPointerException, DierException {
+	public void eet() throws NullPointerException, DierException {
         Cel dezeCel = super.getCel();
+        Cel buurCel = this.getRechterBuurCel();
+        Organisme slachtoffer = buurCel.getOrganisme();
 
         // indien slachtoffer NULL
         if (slachtoffer == null) {
     		Cel slachtofferCel = slachtoffer.getCel();
     		throw new NullPointerException(String.format(
-    				"Dier %1$d, %2$d krijgt NULL(%3$d, %4$d) te eten",
+    				"Dier x:%1$d, y:%2$d krijgt NULL(%3$d, %4$d) te eten",
 					dezeCel.getX(), dezeCel.getY(), slachtofferCel.getX(), slachtofferCel.getY())
 			);
 		}
@@ -32,7 +34,7 @@ public abstract class Dier extends Organisme {
 		// indien Dier al een actie heeft ondergaan
 		if (heeftActieOndergaan()) {
     	    throw new DierException(String.format(
-                    "Dier %1$d, %2$d heeft al een actie ondergaan",
+                    "Dier x:%1$d, y:%2$d heeft al een actie ondergaan",
                     dezeCel.getX(), dezeCel.getY())
             );
         }
@@ -41,4 +43,17 @@ public abstract class Dier extends Organisme {
     	slachtoffer.sterf();
     	this.setHeeftActieOndergaan(true);
 	}
+
+	public void vecht(Organisme tegenstander) {
+        Cel dezeCel = super.getCel();
+
+        // indien slachtoffer NULL
+        if (tegenstander == null) {
+            Cel slachtofferCel = tegenstander.getCel();
+            throw new NullPointerException(String.format(
+                    "Dier x:%1$d, y:%2$d krijgt NULL(%3$d, %4$d) als tegenstander",
+                    dezeCel.getX(), dezeCel.getY(), slachtofferCel.getX(), slachtofferCel.getY())
+            );
+        }
+    }
 }

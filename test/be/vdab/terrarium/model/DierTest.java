@@ -15,7 +15,7 @@ public class DierTest {
         assertEquals(1, Terrarium.INSTANCE.getAantalPlanten());
 
         Herbivoor herbivoor = (Herbivoor) Terrarium.INSTANCE.getMatrix()[0][0].getOrganisme();
-        herbivoor.eet(Terrarium.INSTANCE.getMatrix()[0][1].getOrganisme());
+        herbivoor.eet();
 
         assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
         assertEquals(0, Terrarium.INSTANCE.getAantalPlanten());
