@@ -27,6 +27,7 @@ public enum Terrarium {
     };
     private Cel[][] matrix;
     private List<Cel> legeCellen;
+    private int aantalBabyHerbivoren;
 
     Terrarium() {
         matrix = new Cel[DIMENSIE][DIMENSIE];
@@ -89,6 +90,19 @@ public enum Terrarium {
     	}
     }
     
+    public void voegNieuweHerbivorenToe(int aantal){
+    	Collections.shuffle(legeCellen);
+    	for (int i = 0; i < aantal; i++) {
+    		if (legeCellen.isEmpty()) break;
+    		Cel cel = legeCellen.remove(0);
+    		cel.setOrganisme(new Herbivoor());
+    	}
+    }
+
+    public void voegBabyHerbivorenToe(){
+    	voegNieuweHerbivorenToe(aantalBabyHerbivoren);
+    }
+    
     // voor test
     public int getAantalPlanten() {
         int aantal = 0;
@@ -147,6 +161,10 @@ public enum Terrarium {
         return output.toString();
     }
 
+    public void verhoogBabyHerbivoren() {
+    	aantalBabyHerbivoren++;
+    }
+    
 //  public void beweeg(int x, int y) {
 //	if (!beegNaarBovenOK(x, y)) {
 //		if (!beweegNaarOnderOK) {
@@ -187,5 +205,7 @@ public enum Terrarium {
 		
 	}
 
+
+	
 }    
 
