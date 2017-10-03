@@ -17,8 +17,9 @@ public abstract class Dier extends Organisme {
 		this.heeftActieOndergaan = heeftActieOndergaan;
 	}
 
-	public void eet(Organisme slachtoffer) throws NullPointerException, DierException {
+	public void eet() throws NullPointerException {
         Cel dezeCel = super.getCel();
+        Organisme slachtoffer = getRechterBuurCel().getOrganisme();
 
         // indien slachtoffer NULL
         if (slachtoffer == null) {
@@ -29,20 +30,20 @@ public abstract class Dier extends Organisme {
 			);
 		}
 
-		// indien Dier al een actie heeft ondergaan
+		/*// indien Dier al een actie heeft ondergaan
 		if (heeftActieOndergaan()) {
     	    throw new DierException(String.format(
                     "Dier %1$d, %2$d heeft al een actie ondergaan",
                     dezeCel.getX(), dezeCel.getY())
             );
-        }
+        }*/
 
         super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
     	slachtoffer.sterf();
     	this.setHeeftActieOndergaan(true);
 	}
 	
-	public abstract void ageer();
+	public abstract void ageer() throws DierException;
 
 
 	
