@@ -184,20 +184,5 @@ public enum Terrarium {
     }
 
 
-	boolean beweegNaarBovenOK(int x, int y) {
-		if (x - 1 < 0) {
-			return false;
-		}
-		matrix[x - 1][y] = matrix[x][y];
-		Cel celNaar = (Cel) (matrix[x - 1][y]);
-		celNaar.setOrganisme(null);
-		Cel celVan = (Cel) (matrix[x][y]);
-		celVan.setOrganisme(celNaar.getOrganisme());
-		return true;
-	}
-	
-
-
-	
 }    
 
