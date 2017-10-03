@@ -37,10 +37,6 @@ public abstract class Dier extends Organisme {
     	this.setHeeftGeageerd(true);
 	}
 	
-	
-
-
-	
 	protected void magicJump() {
 		
 	}

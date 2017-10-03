@@ -25,7 +25,7 @@ public class Carnivoor extends Dier {
 	}
 
 	private void vecht() {
-
+		// bezig
 	}
 
 	private void beweeg() {
