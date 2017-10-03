@@ -7,7 +7,7 @@ public class Carnivoor extends Dier {
 		String organisme = getRechterBuurCel().toString();
 		switch (organisme) {
 		case "H":
-			eet();
+			super.eet();
 			break;
 
 		case "C":
@@ -17,10 +17,6 @@ public class Carnivoor extends Dier {
 		default:
 			beweeg();
 		}
-
-	}
-
-	private void eet() {
 
 	}
 
