@@ -9,7 +9,7 @@ public class Controller {
         return Terrarium.INSTANCE;
     }
     
-    public void init() {
+    public void initStartOrganismen() {
     	Terrarium.INSTANCE.initStartOrganismen();
     }
 }

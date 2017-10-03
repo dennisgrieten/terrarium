@@ -15,4 +15,11 @@ public abstract class Dier extends Organisme {
 		this.heeftActieOndergaan = heeftActieOndergaan;
 	}
 	
+//	public void eet() {
+//		Terrarium terrarium = Terrarium.INSTANCE;
+//		for (int i = 0; i < terrarium.DIMENSIE; ) {
+//			Terrarium.INSTANCE.
+//		}
+//	}
+	
 }
