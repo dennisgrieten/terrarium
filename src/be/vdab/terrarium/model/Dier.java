@@ -29,4 +29,11 @@ public abstract class Dier extends Organisme {
     	slachtoffer.sterf();
 	}
 	
+	public void eet() {
+		Organisme buur = getRechterBuur();
+		if (buur == null) throw new IllegalStateException();
+		setLevenskracht(getLevenskracht() + buur.getLevenskracht());
+		buur.getCel().setOrganisme(null);
+	}
+	
 }

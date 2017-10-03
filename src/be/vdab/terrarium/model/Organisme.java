@@ -27,4 +27,19 @@ public abstract class Organisme {
     public void sterf() {
         this.cel.unSetOrganisme();
     }
+
+	public Cel getRechterBuurCel() {
+		int x = cel.getX();
+		int y = cel.getY();
+		if (x < Terrarium.INSTANCE.getBreedte() - 1) {
+			return Terrarium.INSTANCE.getMatrix()[y][x+1];
+		} else {
+			return null;
+		}
+	}
+
+	public Organisme getRechterBuur() {
+		return getRechterBuurCel().getOrganisme();
+	}
+
 }
