@@ -76,7 +76,7 @@ public enum Terrarium {
         }
     }
     
-    public void plaatsOrganisme(Organisme organisme, int x, int y) {
+    public void plaatsOrganisme(Organisme organisme, int y, int x) {
     	Cel cel = matrix[y][x];
     	cel.setOrganisme(organisme);
     	legeCellen.remove(cel);
@@ -127,12 +127,7 @@ public enum Terrarium {
     	int aantal = 0;
         for (int y = 0; y < getHoogte(); y++) {
             for (int x = 0; x < getBreedte(); x++) {
-            	if (matrix[y][x].toString().equals(letter)) {
-	                Organisme organisme = matrix[y][x].getOrganisme();
-	                if (organisme != null && organisme instanceof Plant) {
-	                    aantal++;
-	                }
-            	}
+            	if (matrix[y][x].toString().equals(letter)) aantal++;
             }
         }
         return aantal;    	

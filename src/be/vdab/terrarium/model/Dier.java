@@ -13,11 +13,11 @@ public abstract class Dier extends Organisme {
 		return heeftGeageerd;
 	}
 
-	public void setHeeftActieOndergaan(boolean heeftGeageerd) {
+	public void setHeeftGeageerd(boolean heeftGeageerd) {
 		this.heeftGeageerd = heeftGeageerd;
 	}
 
-	public void eet() {
+	protected void eet() {
         Cel dezeCel = super.getCel();
         Organisme slachtoffer = getRechterBuurCel().getOrganisme();
 
@@ -34,7 +34,7 @@ public abstract class Dier extends Organisme {
 
         super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
     	slachtoffer.sterf();
-    	this.setHeeftActieOndergaan(true);
+    	this.setHeeftGeageerd(true);
 	}
 	
 	
