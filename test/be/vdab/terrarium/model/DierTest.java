@@ -27,12 +27,13 @@ public class DierTest {
     }
     
 	@Test
-	public void beweegNaarBovenKan() {
+	public void beweeg() {
 		controller.getTerrarium().plaatsOrganisme(null, 0, 1);
 		Carnivoor carn = new Carnivoor();
 		controller.getTerrarium().plaatsOrganisme(carn, 1, 1);
+		controller.getTerrarium().plaatsOrganisme(carn, 1, 1);
 
-		assertEquals(true, carn.beweegNaarBovenOK(1, 1));
+//		assertEquals(true, carn.beweeg());
 	}
 	
 
