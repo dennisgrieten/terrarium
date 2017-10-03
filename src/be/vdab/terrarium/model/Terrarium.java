@@ -168,6 +168,12 @@ public enum Terrarium {
 
     public void verhoogBabyHerbivoren() {
     	aantalBabyHerbivoren++;
+<<<<<<< HEAD
     }	
+=======
+    }
+
+
+>>>>>>> branch 'master' of https://github.com/dennisgrieten/terrarium
 }    
 
