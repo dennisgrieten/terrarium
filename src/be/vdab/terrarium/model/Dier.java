@@ -41,4 +41,12 @@ public abstract class Dier extends Organisme {
     	slachtoffer.sterf();
     	this.setHeeftActieOndergaan(true);
 	}
+	
+	public abstract void ageer();
+
+
+	
+	public void magicJump() {
+		
+	}
 }
