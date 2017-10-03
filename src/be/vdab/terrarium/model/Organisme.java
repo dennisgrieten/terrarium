@@ -12,6 +12,9 @@ public abstract class Organisme {
         this.levenskracht = levenskracht;
     }
 
+    public abstract boolean heeftGeageerd();
+    
+    
 	public int getLevenskracht() {
 		return levenskracht;
 	}

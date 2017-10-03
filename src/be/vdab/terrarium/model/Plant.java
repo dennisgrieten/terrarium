@@ -11,5 +11,10 @@ public class Plant extends Organisme {
 	public void ageer() {
 		// Niets.
 	}
+
+	@Override
+	public boolean heeftGeageerd() {
+		return false;
+	}
 	
 }

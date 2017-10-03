@@ -7,18 +7,23 @@ import static org.junit.Assert.*;
 
 public class DierTest {
     Controller controller = new Controller();
+    
     @Test
-    public void eet() throws Exception {
+    public void testHerbivoorEetPlant() {
         controller.getTerrarium().plaatsOrganisme(new Herbivoor(), 0,0);
-        controller.getTerrarium().plaatsOrganisme(new Plant(), 1,0);
+        controller.getTerrarium().plaatsOrganisme(new Plant(), 0,1);
+        
+        System.out.println(controller.getTerrarium());
+        
         assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
         assertEquals(1, Terrarium.INSTANCE.getAantalPlanten());
 
-        Herbivoor herbivoor = (Herbivoor) Terrarium.INSTANCE.getMatrix()[0][0].getOrganisme();
-        herbivoor.eet();
-
+        Terrarium.INSTANCE.dagIteratie();
+        
+        System.out.println(controller.getTerrarium());
+        
         assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
-        assertEquals(0, Terrarium.INSTANCE.getAantalPlanten());
+        assertEquals(2, Terrarium.INSTANCE.getAantalPlanten());
     }
     
 	@Test
@@ -32,4 +37,42 @@ public class DierTest {
 	
 
 
+    @Test
+    public void testCarnivoorEetHerbivoor() {
+        controller.getTerrarium().plaatsOrganisme(new Carnivoor(), 0,0);
+        controller.getTerrarium().plaatsOrganisme(new Herbivoor(), 0,1);
+        
+        System.out.println(controller.getTerrarium());
+        
+        assertEquals(1, Terrarium.INSTANCE.getAantalCarnivoren());
+        assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
+
+        Terrarium.INSTANCE.dagIteratie();
+        
+        System.out.println(controller.getTerrarium());
+        
+        assertEquals(1, Terrarium.INSTANCE.getAantalCarnivoren());
+        assertEquals(0, Terrarium.INSTANCE.getAantalHerbivoren());
+
+    }
+    
+    @Test
+    public void testHerbivorenVrijen() {
+        controller.getTerrarium().plaatsOrganisme(new Herbivoor(), 4,2);
+        controller.getTerrarium().plaatsOrganisme(new Herbivoor(), 4,3);
+        
+        System.out.println(controller.getTerrarium());
+        
+        assertEquals(2, Terrarium.INSTANCE.getAantalHerbivoren());
+
+        Terrarium.INSTANCE.dagIteratie();
+        
+        System.out.println(controller.getTerrarium());
+        
+        assertEquals(3, Terrarium.INSTANCE.getAantalHerbivoren());
+
+    }
+    
+    
+    
 }

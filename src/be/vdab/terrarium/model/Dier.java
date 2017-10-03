@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import be.vdab.terrarium.util.DierException;
 
 public abstract class Dier extends Organisme {
-    private boolean heeftActieOndergaan;
+    private boolean heeftGeageerd;
 
     public Dier() {
-        this.heeftActieOndergaan = false;
+        this.heeftGeageerd = false;
     }
 
-	public boolean heeftActieOndergaan() {
-		return heeftActieOndergaan;
+	public boolean heeftGeageerd() {
+		return heeftGeageerd;
 	}
 
-	public void setHeeftActieOndergaan(boolean heeftActieOndergaan) {
-		this.heeftActieOndergaan = heeftActieOndergaan;
+	public void setHeeftGeageerd(boolean heeftGeageerd) {
+		this.heeftGeageerd = heeftGeageerd;
 	}
 
-	public void eet() {
+	protected void eet() {
         Cel dezeCel = super.getCel();
         Organisme slachtoffer = getRechterBuurCel().getOrganisme();
 
@@ -32,20 +32,18 @@ public abstract class Dier extends Organisme {
 			);
 		}
 
-		/*// indien Dier al een actie heeft ondergaan
-		if (heeftActieOndergaan()) {
-    	    throw new DierException(String.format(
-                    "Dier %1$d, %2$d heeft al een actie ondergaan",
-                    dezeCel.getX(), dezeCel.getY())
-            );
-        }*/
+        
 
         super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
     	slachtoffer.sterf();
-    	this.setHeeftActieOndergaan(true);
+    	this.setHeeftGeageerd(true);
 	}
 	
+<<<<<<< HEAD
 	public abstract void ageer();
+=======
+	
+>>>>>>> branch 'master' of https://github.com/dennisgrieten/terrarium
 
 
     public void beweeg() {
