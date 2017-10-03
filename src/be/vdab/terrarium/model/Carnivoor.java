@@ -4,18 +4,22 @@ public class Carnivoor extends Dier {
 
 	@Override
 	public void ageer() {
-		String organisme = getRechterBuurCel().toString();
-		switch (organisme) {
-		case "H":
-			super.eet();
-			break;
+		if (getRechterBuurCel() == null) {
+			magicJump();
+		} else {
+			String organisme = getRechterBuurCel().toString();
+			switch (organisme) {
+			case "H":
+				super.eet();
+				break;
 
-		case "C":
-			vecht();
-			break;
+			case "C":
+				vecht();
+				break;
 
-		default:
-			beweeg();
+			default:
+				beweeg();
+			}
 		}
 
 	}
