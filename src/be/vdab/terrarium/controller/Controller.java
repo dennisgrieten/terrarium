@@ -14,6 +14,5 @@ public class Controller {
     }
     
     public void dagIteratie() {
-    	//volgende dag
     }
 }

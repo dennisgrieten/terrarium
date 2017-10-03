@@ -20,10 +20,6 @@ public class Herbivoor extends Dier {
 
 	}
 
-	private void eet() {
-
-	}
-
 	private void vrij() {
 		Organisme buur = getRechterBuur();
 		if (buur == null || !(buur instanceof Herbivoor))
