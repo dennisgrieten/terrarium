@@ -28,12 +28,12 @@ public enum Terrarium {
 
     Terrarium() {
         matrix = new Cel[DIMENSIE][DIMENSIE];
-        legeCellen = new ArrayList<Cel>();
+        legeCellen = new ArrayList<>();
         initMatrix();
     }
 
     private void initMatrix() {
-        // initialiseer cellen in de matrix met coördinaten
+        // initialiseer cellen in de matrix met coÃ¶rdinaten
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 matrix[i][j] = new Cel(i, j);
@@ -64,5 +64,45 @@ public enum Terrarium {
             output.append("\n");
         }
         return output.toString();
+    }
+    
+//    public void beweeg(int x, int y) {
+//    	if (!beegNaarBovenOK(x, y)) {
+//    		if (!beweegNaarOnderOK) {
+//    			if (!beweegNaarLinksOk) {
+//    				if (!beweegNaarRechtsOK) {
+//    					magicJump();
+//    				}
+//    			}
+//    		}
+//    	}
+//    		
+//    		
+//    }
+
+//	if (((x - 1) < 0) || ((y + 1) > DIMENSIE)) {
+//	
+//}
+//if ((y + 1) > DIMENSIE) {
+//	magicJump();
+//} else {
+//	
+//}
+
+    
+    boolean beweegNaarBovenOK(int x, int y) {
+    	if (x - 1 < 0) {
+    		return false;
+    	}
+    	matrix[x - 1][y] = matrix[x][y];
+    	Cel celNaar = (Cel) (matrix[x - 1][y]);
+    	celNaar.setOrganisme(null);
+    	Cel celVan = (Cel) (matrix[x][y]);
+    	celVan.setOrganisme(celNaar.getOrganisme());
+    	return true;
+    }
+    
+    private void magicJump() {
+    	
     }
 }
