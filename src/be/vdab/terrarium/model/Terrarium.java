@@ -33,6 +33,7 @@ public enum Terrarium {
     }
 
     private void initMatrix() {
+    	legeCellen.clear();
         // initialiseer cellen in de matrix met coördinaten
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -44,6 +45,7 @@ public enum Terrarium {
 
     public void initStartOrganismen() {
         // vul matrix met start organismen
+    	initMatrix();
         plaatsOrganisme(startOrganismen);
     }
 
