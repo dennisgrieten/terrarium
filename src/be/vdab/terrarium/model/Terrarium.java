@@ -75,8 +75,8 @@ public enum Terrarium {
         }
     }
     
-    public void plaatsOrganisme(Organisme organisme, int i, int j) {
-    	Cel cel = matrix[i][j];
+    public void plaatsOrganisme(Organisme organisme, int x, int y) {
+    	Cel cel = matrix[y][x];
     	cel.setOrganisme(organisme);
     	legeCellen.remove(cel);
     }
