@@ -7,7 +7,7 @@ public class Console {
 	public static void main(String[] args) {
 		Controller controller = new Controller();
 
-		controller.init();
+		controller.initStartOrganismen();
 		System.out.println(controller.getTerrarium().toString());
 
 		

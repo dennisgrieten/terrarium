@@ -11,7 +11,7 @@ public class TerrariumTest {
     
     @Test
     public void getAantalPlantenIs4() {
-    	controller.init();
+    	controller.initStartOrganismen();
         assertEquals(4, controller.getTerrarium().getAantalPlanten());
     }
 
