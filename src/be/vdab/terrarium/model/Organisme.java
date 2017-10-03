@@ -1,8 +1,9 @@
 package be.vdab.terrarium.model;
 
 public abstract class Organisme {
+	
     private int levenskracht;
-
+    
     public Organisme() {
         setLevenskracht(1);
     }
@@ -14,6 +15,5 @@ public abstract class Organisme {
 	public int getLevenskracht() {
 		return levenskracht;
 	}
-    
     
 }

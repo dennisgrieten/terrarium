@@ -8,7 +8,8 @@ import java.util.Random;
 public enum Terrarium {
     INSTANCE;
 
-    private final int DIMENSIE = 6;
+    public static final int DIMENSIE = 6;
+    
     private final Random random = new Random();
     private final Organisme[] startOrganismen = {
             new Plant(),
@@ -33,6 +34,18 @@ public enum Terrarium {
         initMatrix();
     }
 
+    public Cel[][] getMatrix() {
+    	return matrix;
+    }
+    
+    public int getHoogte() {
+    	return DIMENSIE;
+    }
+    
+    public int getBreedte() {
+    	return DIMENSIE;
+    }
+    
     private void initMatrix() {
         // initialiseer cellen in de matrix met coördinaten
         for (int i = 0; i < matrix.length; i++) {
