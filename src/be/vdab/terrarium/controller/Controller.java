@@ -1,4 +1,4 @@
-package be.vdab.terrarium.be.vdab.be.terrarium.controller;
+package be.vdab.terrarium.controller;
 
 import be.vdab.terrarium.model.Terrarium;
 

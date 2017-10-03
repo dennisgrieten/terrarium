@@ -1,9 +1,6 @@
 package be.vdab.terrarium.view;
 
-import be.vdab.terrarium.be.vdab.be.terrarium.controller.Controller;
-import be.vdab.terrarium.model.Terrarium;
-
-import javax.naming.ldap.Control;
+import be.vdab.terrarium.controller.Controller;
 
 public class Console {
 
