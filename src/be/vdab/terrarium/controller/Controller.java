@@ -12,4 +12,8 @@ public class Controller {
     public void initStartOrganismen() {
     	Terrarium.INSTANCE.initStartOrganismen();
     }
+    
+    public void dagIteratie() {
+    	//volgende dag
+    }
 }
