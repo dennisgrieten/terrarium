@@ -1,14 +1,12 @@
 package be.vdab.terrarium.model;
 
 public class Plant extends Organisme {
-	private int levensKracht;
-
 	public Plant() {
-		this.levensKracht = 1;
+		super();
 	}
 
     public int getLevensKracht() {
-        return levensKracht;
+        return super.getLevenskracht();
     }
 
     @Override
