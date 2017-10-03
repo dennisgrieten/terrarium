@@ -3,13 +3,15 @@ package be.vdab.terrarium.model;
 import java.util.Objects;
 
 public class Cel {
-    private final int x;
+
     private final int y;
+    private final int x;
+
     private Organisme organisme = null;
 
-    public Cel(int x, int y) {
-        this.x = x;
+    public Cel(int y, int x) {
         this.y = y;
+        this.x = x;
     }
     
     public void setOrganisme(Organisme organisme) {

@@ -11,16 +11,18 @@ public class TerrariumTest {
 	
     private Controller controller;
     
+    
     @Before
 	public void before() {
     	controller = new Controller();
     	
-    	controller.initStartOrganismen();
     	
 	}
     
     @Test
     public void getAantalPlantenIs4() {
+    	controller.initStartOrganismen();
+
         assertEquals(4, controller.getTerrarium().getAantalPlanten());
     }
 
@@ -30,18 +32,13 @@ public class TerrariumTest {
     }
 
     @Test
-    public void getAantalCarnivoren() throws Exception {  	
+    public void getAantalCarnivoren()  {  	
         assertEquals(3, controller.getTerrarium().getAantalCarnivoren());
     }
-
-	@Test
-	public void beweegNaarBovenKan() {
-		assertEquals("true", Terrarium.INSTANCE.beweegNaarBovenOK(1, 1));
-	}
-	
-	@Test
-	public void beweegNaarBovenKanNiet() {
-		assertEquals("false", Terrarium.INSTANCE.beweegNaarBovenOK(0, 1));
-	}
-
+/*
+    @Test
+    public void testHerbivoorEetPlant() {
+    	
+        assertEquals(3, controller.getTerrarium().getAantalCarnivoren());
+    }*/
 }

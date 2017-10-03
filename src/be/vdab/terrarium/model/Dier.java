@@ -3,21 +3,21 @@ package be.vdab.terrarium.model;
 import be.vdab.terrarium.util.DierException;
 
 public abstract class Dier extends Organisme {
-    private boolean heeftActieOndergaan;
+    private boolean heeftGeageerd;
 
     public Dier() {
-        this.heeftActieOndergaan = false;
+        this.heeftGeageerd = false;
     }
 
-	public boolean heeftActieOndergaan() {
-		return heeftActieOndergaan;
+	public boolean heeftGeageerd() {
+		return heeftGeageerd;
 	}
 
-	public void setHeeftActieOndergaan(boolean heeftActieOndergaan) {
-		this.heeftActieOndergaan = heeftActieOndergaan;
+	public void setHeeftActieOndergaan(boolean heeftGeageerd) {
+		this.heeftGeageerd = heeftGeageerd;
 	}
 
-	public void eet() throws NullPointerException {
+	public void eet() {
         Cel dezeCel = super.getCel();
         Organisme slachtoffer = getRechterBuurCel().getOrganisme();
 
@@ -30,20 +30,14 @@ public abstract class Dier extends Organisme {
 			);
 		}
 
-		/*// indien Dier al een actie heeft ondergaan
-		if (heeftActieOndergaan()) {
-    	    throw new DierException(String.format(
-                    "Dier %1$d, %2$d heeft al een actie ondergaan",
-                    dezeCel.getX(), dezeCel.getY())
-            );
-        }*/
+        
 
         super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
     	slachtoffer.sterf();
     	this.setHeeftActieOndergaan(true);
 	}
 	
-	public abstract void ageer() throws DierException;
+	
 
 
 	

@@ -8,9 +8,9 @@ import static org.junit.Assert.*;
 public class DierTest {
     Controller controller = new Controller();
     @Test
-    public void eet() throws Exception {
+    public void testHerbivoorEetPlant() {
         controller.getTerrarium().plaatsOrganisme(new Herbivoor(), 0,0);
-        controller.getTerrarium().plaatsOrganisme(new Plant(), 1,0);
+        controller.getTerrarium().plaatsOrganisme(new Plant(), 0,1);
         assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
         assertEquals(1, Terrarium.INSTANCE.getAantalPlanten());
 

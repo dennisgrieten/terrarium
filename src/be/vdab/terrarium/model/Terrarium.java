@@ -9,6 +9,7 @@ public enum Terrarium {
     INSTANCE;
 
     public static final int DIMENSIE = 6;
+    public static final int AANTAL_NIEUWE_PLANTEN_PER_DAG = 2;
     
     private final Random random = new Random();
     private final Organisme[] startOrganismen = {
@@ -50,10 +51,10 @@ public enum Terrarium {
     private void initMatrix() {
     	legeCellen.clear();
         // initialiseer cellen in de matrix met coördinaten
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                matrix[i][j] = new Cel(i, j);
-                legeCellen.add(matrix[i][j]);
+        for (int y = 0; y < getHoogte(); y++) {
+            for (int x = 0; x < getBreedte(); x++) {
+                matrix[y][x] = new Cel(y, x);
+                legeCellen.add(matrix[y][x]);
             }
         }
     }
@@ -81,9 +82,9 @@ public enum Terrarium {
     	legeCellen.remove(cel);
     }
 
-    public void voegNieuwePlantenToe(int aantal) {
+    public void voegNieuwePlantenToe() {
     	Collections.shuffle(legeCellen);
-    	for (int i = 0; i < aantal; i++) {
+    	for (int i = 0; i < AANTAL_NIEUWE_PLANTEN_PER_DAG; i++) {
     		if (legeCellen.isEmpty()) break;
     		Cel cel = legeCellen.remove(0);
     		cel.setOrganisme(new Plant());
@@ -106,64 +107,50 @@ public enum Terrarium {
     private void dagIteratie(String letter) {
     	for (int y = 0; y < getHoogte(); y++) {
     		for (int x = 0; x < getBreedte(); x++) {
-        		if ( matrix[y][x].toString().equals(letter) ) {
-        			matrix[y][x].getOrganisme().ageer();
+    			Cel cel = matrix[y][x];
+    			Organisme organisme = cel.getOrganisme();
+        		if (cel.toString().equals(letter)) {
+        			if (!organisme.heeftGeageerd()) organisme.ageer();
         		}
         	}	
     	}
     }
     
-    
     public void dagIteratie() {
-    	voegNieuwePlantenToe(2);	// TODO proper
+    	voegNieuwePlantenToe();
     	dagIteratie("H");
     	dagIteratie("C");
     	voegBabyHerbivorenToe();
     }
     
-    // voor test
-    public int getAantalPlanten() {
-        int aantal = 0;
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                Organisme organisme = matrix[i][j].getOrganisme();
-                if (organisme != null && organisme instanceof Plant) {
-                    aantal++;
-                }
+    private int getAantalOrganismen(String letter) {
+    	int aantal = 0;
+        for (int y = 0; y < getHoogte(); y++) {
+            for (int x = 0; x < getBreedte(); x++) {
+            	if (matrix[y][x].toString().equals(letter)) {
+	                Organisme organisme = matrix[y][x].getOrganisme();
+	                if (organisme != null && organisme instanceof Plant) {
+	                    aantal++;
+	                }
+            	}
             }
         }
-        return aantal;
+        return aantal;    	
+    }
+    
+    // voor test
+    public int getAantalPlanten() {
+    	return getAantalOrganismen("P");
     }
 
     // voor test
     public int getAantalHerbivoren() {
-        int aantal = 0;
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                Organisme organisme = matrix[i][j].getOrganisme();
-                if (organisme != null && organisme instanceof Herbivoor) {
-                    aantal++;
-                }
-            }
-        }
-        return aantal;
+    	return getAantalOrganismen("H");
     }
 
     // voor test
     public int getAantalCarnivoren() {
-        int aantal = 0;
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                Organisme organisme = matrix[i][j].getOrganisme();
-                if (organisme != null && organisme instanceof Carnivoor) {
-                    aantal++;
-                }
-            }
-        }
-        return aantal;
+    	return getAantalOrganismen("C");
     }
 
 
@@ -181,23 +168,6 @@ public enum Terrarium {
 
     public void verhoogBabyHerbivoren() {
     	aantalBabyHerbivoren++;
-    }
-
-
-	boolean beweegNaarBovenOK(int x, int y) {
-		if (x - 1 < 0) {
-			return false;
-		}
-		matrix[x - 1][y] = matrix[x][y];
-		Cel celNaar = (Cel) (matrix[x - 1][y]);
-		celNaar.setOrganisme(null);
-		Cel celVan = (Cel) (matrix[x][y]);
-		celVan.setOrganisme(celNaar.getOrganisme());
-		return true;
-	}
-	
-
-
-	
+    }	
 }    
 
