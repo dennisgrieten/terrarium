@@ -14,5 +14,6 @@ public class Controller {
     }
     
     public void dagIteratie() {
+    	Terrarium.INSTANCE.dagIteratie();
     }
 }
