@@ -14,7 +14,9 @@ public class Cel {
     
     public void setOrganisme(Organisme organisme) {
         this.organisme = organisme;
-        this.organisme.setCel(this);    // megeven van pointer naar deze cel
+        if (organisme != null) {
+            this.organisme.setCel(this);    // megeven van pointer naar deze cel
+        }
     }
 
     public void unSetOrganisme() {

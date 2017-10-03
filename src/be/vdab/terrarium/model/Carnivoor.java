@@ -24,11 +24,6 @@ public class Carnivoor extends Dier {
 
 	}
 
-	private void beweeg() {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public String toString() {
 		return "C";

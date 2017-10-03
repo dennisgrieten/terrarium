@@ -81,6 +81,11 @@ public enum Terrarium {
     	legeCellen.remove(cel);
     }
 
+    public void plaatsOrganisme(Organisme organisme, ArrayList<Cel> legeBuren) {
+        int n = random.nextInt(legeBuren.size());
+        legeBuren.get(n).setOrganisme(organisme);
+    }
+
     public void voegNieuwePlantenToe(int aantal) {
     	Collections.shuffle(legeCellen);
     	for (int i = 0; i < aantal; i++) {
@@ -183,6 +188,12 @@ public enum Terrarium {
     	aantalBabyHerbivoren++;
     }
 
+ 	public void doMagicJump(int x, int y) {
+        int n = random.nextInt(legeCellen.size());
+        Cel cel = matrix[x][y];
+        legeCellen.get(n).setOrganisme(cel.getOrganisme());
+        legeCellen.remove(n);
+	}
 
 }    
 

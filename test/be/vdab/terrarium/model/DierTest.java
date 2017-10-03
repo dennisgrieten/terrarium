@@ -20,5 +20,16 @@ public class DierTest {
         assertEquals(1, Terrarium.INSTANCE.getAantalHerbivoren());
         assertEquals(0, Terrarium.INSTANCE.getAantalPlanten());
     }
+    
+	@Test
+	public void beweegNaarBovenKan() {
+		controller.getTerrarium().plaatsOrganisme(null, 0, 1);
+		Carnivoor carn = new Carnivoor();
+		controller.getTerrarium().plaatsOrganisme(carn, 1, 1);
+
+		assertEquals(true, carn.beweegNaarBovenOK(1, 1));
+	}
+	
+
 
 }

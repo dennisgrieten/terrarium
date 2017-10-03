@@ -29,11 +29,6 @@ public class Herbivoor extends Dier {
 		Terrarium.INSTANCE.verhoogBabyHerbivoren();
 	}
 
-	private void beweeg() {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public String toString() {
 		return "H";
