@@ -53,6 +53,12 @@ public enum Terrarium {
             legeCellen.remove(n);
         }
     }
+    
+    public void plaatsOrganisme(Organisme organisme, int i, int j) {
+    	Cel cel = matrix[i][j];
+    	cel.setOrganisme(organisme);
+    	legeCellen.remove(cel);
+    }
 
     @Override
     public String toString() {
