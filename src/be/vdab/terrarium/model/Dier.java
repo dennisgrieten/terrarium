@@ -41,7 +41,7 @@ public abstract class Dier extends Organisme {
 
 
 	
-	public void magicJump() {
+	protected void magicJump() {
 		
 	}
 }

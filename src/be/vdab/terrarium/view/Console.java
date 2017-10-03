@@ -8,19 +8,17 @@ public class Console {
 
 	public static void main(String[] args) {
 		Controller controller = new Controller();
+		
 		Scanner scanner = new Scanner(System.in);
 		String input = "";
 		int dagCounter = 1;
 
+		controller.initStartOrganismen();
 		do {
-			controller.initStartOrganismen();
-			System.out.println("Begin dag " + dagCounter + "\n" + controller.getTerrarium().toString()
-					+ "\n\nEinde dag " + dagCounter);
-			controller.dagIteratie();
-
-			// iets met controller.geboortesToevoegen?
-			System.out.println(controller.getTerrarium().toString());
-
+			System.out.println("Begin dag " + dagCounter + "\n" + controller.getTerrarium());
+			controller.dagActies();
+			System.out.println("Einde dag " + dagCounter + "\n" + controller.getTerrarium());
+			controller.dagInit();
 			input = scanner.nextLine();
 			dagCounter++;
 		} while (!input.equals("s"));

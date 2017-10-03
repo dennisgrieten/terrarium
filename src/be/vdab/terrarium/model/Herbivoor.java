@@ -1,25 +1,27 @@
 package be.vdab.terrarium.model;
 
-import be.vdab.terrarium.util.DierException;
-
 public class Herbivoor extends Dier {
 
 	@Override
-	public void ageer() throws NullPointerException {
-		String organisme = getRechterBuurCel().toString();
-		switch (organisme) {
-		case "P":
-			super.eet();
-			break;
+	public void ageer() {
+		if (getRechterBuurCel() == null) {
+			magicJump();
+		} else {
+			String organisme = getRechterBuurCel().toString();
+			switch (organisme) {
+			case "P":
+				super.eet();
+				break;
 
-		case "H":
-			vrij();
-			break;
+			case "H":
+				vrij();
+				break;
 
-		default:
-			beweeg();
+			default:
+				beweeg();
+			}			
 		}
-
+		
 	}
 
 	private void vrij() {
