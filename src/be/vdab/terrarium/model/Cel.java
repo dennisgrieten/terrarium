@@ -37,4 +37,12 @@ public class Cel {
         result = 31 * result + (organisme != null ? organisme.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        if (this.organisme != null) {
+            return organisme.toString();
+        }
+        return ".";
+    }
 }
