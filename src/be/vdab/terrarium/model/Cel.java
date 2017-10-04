@@ -48,6 +48,10 @@ public class Cel {
 			return false;
 		}
 	}
+	
+	public boolean isLeeg() {
+		return organisme == null;
+	}
 
 	@Override
 	public int hashCode() {

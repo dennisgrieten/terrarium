@@ -33,32 +33,34 @@ public abstract class Dier extends Organisme {
 		this.setHeeftGeageerd(true);
 	}
 
-	protected void magicJump() {
-
-	}
-
 	public void beweeg() {
-//		Cel dezeCel = super.getCel();
-//		ArrayList<Cel> legeBuren = new ArrayList<>();
-//		Cel bovenbuur = dezeCel.getOrganisme().getBovenBuurCel();
-//		if ((bovenbuur != null) && (bovenbuur.getOrganisme() != null)) {
-//			legeBuren.add(bovenbuur);
-//		}
-//		Cel onderbuur = dezeCel.getOrganisme().getOnderBuurCel();
-//		if ((onderbuur != null) && (onderbuur.getOrganisme() != null)) {
-//			legeBuren.add(onderbuur);
-//		}
-//		Cel linkerbuur = dezeCel.getOrganisme().getLinkerBuurCel();
-//		if ((linkerbuur != null) && (linkerbuur.getOrganisme() != null)) {
-//			legeBuren.add(linkerbuur);
-//		}
-//		Cel rechterbuur = dezeCel.getOrganisme().getRechterBuurCel();
-//		if ((rechterbuur != null) && (rechterbuur.getOrganisme() != null)) {
-//			legeBuren.add(rechterbuur);
-//		}
-//
-//		Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme(), legeBuren);
-//		dezeCel.unSetOrganisme();
-//		this.setHeeftGeageerd(true);
+		Cel dezeCel = super.getCel();
+		ArrayList<Cel> legeBuren = new ArrayList<>();
+		Cel rechterbuur = dezeCel.getOrganisme().getRechterBuurCel();
+		if ((rechterbuur != null) && (rechterbuur.isLeeg())) {
+			legeBuren.add(rechterbuur);
+		} else {
+			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme()); // DIT IS DE MAGIC JUMP
+		}
+		
+		
+		Cel bovenbuur = dezeCel.getOrganisme().getBovenBuurCel();
+		if ((bovenbuur != null) && (bovenbuur.isLeeg())) {
+			legeBuren.add(bovenbuur);
+		}
+		Cel onderbuur = dezeCel.getOrganisme().getOnderBuurCel();
+		if ((onderbuur != null) && (onderbuur.isLeeg())) {
+			legeBuren.add(onderbuur);
+		}
+		Cel linkerbuur = dezeCel.getOrganisme().getLinkerBuurCel();
+		if ((linkerbuur != null) && (linkerbuur.isLeeg())) {
+			legeBuren.add(linkerbuur);
+		}
+
+		if (legeBuren.size() > 0) {
+			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme(), legeBuren);
+			dezeCel.unSetOrganisme();
+			this.setHeeftGeageerd(true);
+		}
 	}
 }

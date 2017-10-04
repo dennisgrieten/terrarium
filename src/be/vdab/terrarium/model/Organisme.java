@@ -50,7 +50,7 @@ public abstract class Organisme {
 	public Cel getLinkerBuurCel() {
 		int x = cel.getX();
 		int y = cel.getY();
-		if (x < Terrarium.INSTANCE.getBreedte() - 1) {
+		if (x > 0) {
 			return Terrarium.INSTANCE.getMatrix()[y][x - 1];
 		} else {
 			return null;
@@ -64,7 +64,7 @@ public abstract class Organisme {
 	public Cel getBovenBuurCel() {
 		int x = cel.getX();
 		int y = cel.getY();
-		if (y < Terrarium.INSTANCE.getHoogte() - 1) {
+		if (y > 0) {
 			return Terrarium.INSTANCE.getMatrix()[y - 1][x];
 		} else {
 			return null;

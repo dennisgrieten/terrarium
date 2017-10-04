@@ -71,9 +71,13 @@ public enum Terrarium {
 		cel.setOrganisme(organisme);
 	}
 
-	public void plaatsOrganisme(Organisme organisme, ArrayList<Cel> legeBuren) {
-		int n = random.nextInt(legeBuren.size());
-		legeBuren.get(n).setOrganisme(organisme);
+	public void plaatsOrganisme(Organisme organisme, List<Cel> legeCellen) {
+		int n = random.nextInt(legeCellen.size());
+		legeCellen.get(n).setOrganisme(organisme);
+	}
+
+	public void plaatsOrganisme(Organisme organisme) {
+		plaatsOrganisme(organisme, legeCellen);
 	}
 
 	public void voegNieuwePlantenToe() {
@@ -166,4 +170,14 @@ public enum Terrarium {
 	public void verhoogBabyHerbivoren() {
 		aantalBabyHerbivoren++;
 	}
+	
+	public void verplaatsOrganismeNaarLegeCel(Organisme organisme) {
+		Collections.shuffle(legeCellen);
+		if (!legeCellen.isEmpty()) {
+			Cel cel = legeCellen.get(0);
+			cel.setOrganisme(organisme);
+		}
+	}
+
+
 }
