@@ -1,7 +1,10 @@
 package be.vdab.terrarium.util;
 
 public class DierException extends Exception {
-    public DierException() {
+
+	private static final long serialVersionUID = 1L;
+
+	public DierException() {
         super();
     }
 

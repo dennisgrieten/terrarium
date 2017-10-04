@@ -4,8 +4,6 @@ import be.vdab.terrarium.model.Organisme;
 import be.vdab.terrarium.model.Terrarium;
 
 public class Controller {
-	
-	private Terrarium terra = Terrarium.INSTANCE;
 
 	public Terrarium getTerrarium() {
 		return Terrarium.INSTANCE;

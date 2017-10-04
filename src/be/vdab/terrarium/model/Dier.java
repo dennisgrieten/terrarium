@@ -1,7 +1,5 @@
 package be.vdab.terrarium.model;
 
-import be.vdab.terrarium.util.DierException;
-
 import java.util.ArrayList;
 
 public abstract class Dier extends Organisme {
