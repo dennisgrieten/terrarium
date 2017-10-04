@@ -87,10 +87,10 @@ public class DierTest {
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, 0);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		herbivoor.beweeg();
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		System.out.println(herbivoor.getCel().getY());
 		System.out.println(herbivoor.getCel().getX());
@@ -108,11 +108,11 @@ public class DierTest {
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		herbivoor.beweeg();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(0, herbivoor.getCel().getX());
@@ -129,11 +129,11 @@ public class DierTest {
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 1, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		herbivoor.beweeg();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
@@ -150,11 +150,11 @@ public class DierTest {
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		herbivoor.beweeg();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(1, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
@@ -171,11 +171,11 @@ public class DierTest {
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		herbivoor.beweeg();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
@@ -193,12 +193,12 @@ public class DierTest {
 		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
 		carnivoorSterk.vecht();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(3, carnivoorSterk.getLevenskracht());
 
@@ -218,12 +218,12 @@ public class DierTest {
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
 		carnivoorZwak.vecht();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(3, carnivoorSterk.getLevenskracht());
 
@@ -243,12 +243,12 @@ public class DierTest {
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
 		carnivoorZwak.vecht();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(2, carnivoorSterk.getLevenskracht());
 		assertEquals(2, carnivoorZwak.getLevenskracht());
