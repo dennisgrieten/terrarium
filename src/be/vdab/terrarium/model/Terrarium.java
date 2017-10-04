@@ -106,8 +106,9 @@ public enum Terrarium {
 				Cel cel = matrix[y][x];
 				Organisme organisme = cel.getOrganisme();
 				if (cel.toString().equals(letter)) {
-					if (!organisme.heeftGeageerd())
+					if (!organisme.heeftGeageerd()) {
 						organisme.ageer();
+					}
 				}
 			}
 		}
