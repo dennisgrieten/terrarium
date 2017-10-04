@@ -12,11 +12,9 @@ public enum Terrarium {
 	public static final int AANTAL_NIEUWE_PLANTEN_PER_DAG = 2;
 
 	private final Random random = new Random();
-	private final Organisme[] startOrganismen = {
-	        new Plant(), new Plant(), new Plant(), new Plant(),
-            new Herbivoor(), new Herbivoor(), new Herbivoor(), new Herbivoor(), new Herbivoor(),
-            new Carnivoor(), new Carnivoor(), new Carnivoor()
-	};
+	private final Organisme[] startOrganismen = { new Plant(), new Plant(), new Plant(), new Plant(), new Herbivoor(),
+			new Herbivoor(), new Herbivoor(), new Herbivoor(), new Herbivoor(), new Carnivoor(), new Carnivoor(),
+			new Carnivoor() };
 	private Cel[][] matrix;
 	private List<Cel> legeCellen;
 	private int aantalBabyHerbivoren;

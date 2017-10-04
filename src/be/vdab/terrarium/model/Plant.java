@@ -2,7 +2,7 @@ package be.vdab.terrarium.model;
 
 public class Plant extends Organisme {
 
-    @Override
+	@Override
 	public String toString() {
 		return "P";
 	}
@@ -16,5 +16,5 @@ public class Plant extends Organisme {
 	public boolean heeftGeageerd() {
 		return false;
 	}
-	
+
 }

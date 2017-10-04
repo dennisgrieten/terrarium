@@ -12,13 +12,11 @@ public class HerbivoorTest {
 		herbivoor = new Herbivoor();
 		assertEquals("H", herbivoor.toString());
 	}
-	
+
 	@Test
 	public void levenskrachtVanEenHerbivoorIsEen() {
 		herbivoor = new Herbivoor();
 		assertEquals(1, herbivoor.getLevenskracht());
 	}
-	
-	
 
 }

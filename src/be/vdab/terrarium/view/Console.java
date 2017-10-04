@@ -8,7 +8,7 @@ public class Console {
 
 	public static void main(String[] args) {
 		Controller controller = new Controller();
-		
+
 		Scanner scanner = new Scanner(System.in);
 		String input = "";
 		int dagCounter = 1;

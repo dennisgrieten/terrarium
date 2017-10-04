@@ -12,13 +12,11 @@ public class PlantTest {
 		plant = new Plant();
 		assertEquals("P", plant.toString());
 	}
-	
+
 	@Test
 	public void levenskrachtVanEenPlantIsEen() {
 		plant = new Plant();
 		assertEquals(1, plant.getLevenskracht());
 	}
-	
-	
 
 }

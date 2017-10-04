@@ -19,9 +19,9 @@ public class Herbivoor extends Dier {
 
 			default:
 				beweeg();
-			}			
+			}
 		}
-		
+
 	}
 
 	private void vrij() {
