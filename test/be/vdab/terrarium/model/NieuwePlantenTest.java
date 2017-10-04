@@ -5,12 +5,14 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import be.vdab.terrarium.view.Console;
+
 public class NieuwePlantenTest {
 
 	@Before
 	public void before() {
 		Terrarium.INSTANCE.initStartOrganismen();
-		System.out.println(Terrarium.INSTANCE);
+		System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
 	}
 
 	@Test

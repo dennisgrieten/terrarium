@@ -31,11 +31,11 @@ public abstract class Dier extends Organisme {
 		this.setHeeftGeageerd(true);
 	}
 
-	protected void magicJump() {
+	private void magicJump() {
 
 	}
 
-	public void beweeg() {
+	protected void beweeg() {
 		// Cel dezeCel = super.getCel();
 		// ArrayList<Cel> legeBuren = new ArrayList<>();
 		// Cel bovenbuur = dezeCel.getOrganisme().getBovenBuurCel();

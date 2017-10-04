@@ -9,7 +9,7 @@ import be.vdab.terrarium.model.Terrarium;
 
 public class Console {
 
-	private static String getStringRepresentation(Terrarium terrarium) {
+	public static String getStringRepresentation(Terrarium terrarium) {
 		Cel[][] matrix = terrarium.getMatrix();
 		StringBuilder output = new StringBuilder();
 		for (int y = 0; y < terrarium.getHoogte(); y++) {
@@ -23,11 +23,9 @@ public class Console {
 					case "Herbivoor":
 						output.append("H  ");
 						break;
-
 					case "Carnivoor":
 						output.append("C  ");
 						break;
-
 					default:
 						break;
 					}
