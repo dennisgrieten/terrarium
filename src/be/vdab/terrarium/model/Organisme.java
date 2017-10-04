@@ -43,7 +43,8 @@ public abstract class Organisme {
 	}
 
 	public Organisme getRechterBuur() {
-		return getRechterBuurCel().getOrganisme();
+		Cel buurCel = getRechterBuurCel();
+		return buurCel == null ? null : getRechterBuurCel().getOrganisme();
 	}
 
 	public Cel getLinkerBuurCel() {
