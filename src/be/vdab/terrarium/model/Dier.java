@@ -35,15 +35,15 @@ public abstract class Dier extends Organisme {
 
 	public void beweeg() {
 		Cel dezeCel = super.getCel();
+		if (dezeCel.getX() == Terrarium.INSTANCE.getBreedte() - 1) {
+			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme()); // DIT IS DE MAGIC JUMP
+		}
+		
 		ArrayList<Cel> legeBuren = new ArrayList<>();
 		Cel rechterbuur = dezeCel.getOrganisme().getRechterBuurCel();
 		if ((rechterbuur != null) && (rechterbuur.isLeeg())) {
 			legeBuren.add(rechterbuur);
-		} else {
-			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme()); // DIT IS DE MAGIC JUMP
 		}
-		
-		
 		Cel bovenbuur = dezeCel.getOrganisme().getBovenBuurCel();
 		if ((bovenbuur != null) && (bovenbuur.isLeeg())) {
 			legeBuren.add(bovenbuur);
