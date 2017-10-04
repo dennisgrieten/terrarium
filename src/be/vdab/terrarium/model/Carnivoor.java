@@ -4,33 +4,37 @@ public class Carnivoor extends Dier {
 
 	@Override
 	public void ageer() {
-		if (getRechterBuurCel() == null) {
-			magicJump();
-		} else {
-			String organisme = getRechterBuurCel().toString();
-			switch (organisme) {
-			case "H":
+		Organisme rechterbuur = getRechterBuur();
+		if (rechterbuur != null) {
+			switch (rechterbuur.getClass().getSimpleName()) {
+			case "Herbivoor":
 				super.eet();
 				break;
-
-			case "C":
+			case "Carnivoor":
 				vecht();
 				break;
-
-			default:
-				beweeg();
 			}
 		}
-
+		if (!this.heeftGeageerd()) {
+			beweeg();
+		}
 	}
 
 	private void vecht() {
-		// bezig
+		// Organisme buur = getRechterBuur();
+		// if (buur == null || !(buur instanceof Carnivoor)) {
+		// throw new IllegalStateException();
+		// }
 	}
 
 	@Override
 	public String toString() {
-		return "C";
+		return "Carnivoor [heeftGeageerd()=" + heeftGeageerd() + ", getLevenskracht()=" + getLevenskracht()
+				+ ", getCel()=" + getCel() + ", getRechterBuurCel()=" + getRechterBuurCel() + ", getRechterBuur()="
+				+ getRechterBuur() + ", getLinkerBuurCel()=" + getLinkerBuurCel() + ", getLinkerBuur()="
+				+ getLinkerBuur() + ", getBovenBuurCel()=" + getBovenBuurCel() + ", getBovenBuur()=" + getBovenBuur()
+				+ ", getOnderBuurCel()=" + getOnderBuurCel() + ", getOnderBuur()=" + getOnderBuur() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

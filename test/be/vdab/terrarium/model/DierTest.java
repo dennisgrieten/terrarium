@@ -20,7 +20,7 @@ public class DierTest {
 		assertEquals(1, controller.getAantalHerbivoren());
 		assertEquals(1, controller.getAantalPlanten());
 
-		controller.dagActies();
+		controller.dagActies("Herbivoor");
 
 		System.out.println(controller.getTerrarium());
 
