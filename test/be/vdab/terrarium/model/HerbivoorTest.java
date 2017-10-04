@@ -8,12 +8,6 @@ public class HerbivoorTest {
 	private Herbivoor herbivoor;
 
 	@Test
-	public void toStringVanHerbivoorIsH() {
-		herbivoor = new Herbivoor();
-		assertEquals("H", herbivoor.toString());
-	}
-
-	@Test
 	public void levenskrachtVanEenHerbivoorIsEen() {
 		herbivoor = new Herbivoor();
 		assertEquals(1, herbivoor.getLevenskracht());

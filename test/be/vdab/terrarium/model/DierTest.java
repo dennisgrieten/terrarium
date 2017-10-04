@@ -1,6 +1,8 @@
 package be.vdab.terrarium.model;
 
 import be.vdab.terrarium.controller.Controller;
+import be.vdab.terrarium.view.Console;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,17 +14,20 @@ public class DierTest {
 	public void testHerbivoorEetPlant() {
 		System.out.println("testHerbivoorEetPlant");
 		controller.initMatrix();
-		controller.plaatsOrganisme(new Herbivoor(), 0, 0);
+
+		Herbivoor herbivoor = new Herbivoor();
+
+		controller.plaatsOrganisme(herbivoor, 0, 0);
 		controller.plaatsOrganisme(new Plant(), 0, 1);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(1, controller.getAantalHerbivoren());
 		assertEquals(1, controller.getAantalPlanten());
 
-		controller.dagActies("Herbivoor");
+		herbivoor.ageer();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(1, controller.getAantalHerbivoren());
 		assertEquals(0, controller.getAantalPlanten());
@@ -32,17 +37,18 @@ public class DierTest {
 	public void testCarnivoorEetHerbivoor() {
 		System.out.println("testCarnivoorEetHerbivoor");
 		controller.initMatrix();
-		controller.plaatsOrganisme(new Carnivoor(), 0, 0);
+		Carnivoor carnivoor = new Carnivoor();
+
+		controller.plaatsOrganisme(carnivoor, 0, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 0, 1);
 
-		System.out.println(controller.getTerrarium());
-
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 		assertEquals(1, controller.getAantalCarnivoren());
 		assertEquals(1, controller.getAantalHerbivoren());
 
-		controller.dagActies();
+		carnivoor.ageer();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(1, controller.getAantalCarnivoren());
 		assertEquals(0, controller.getAantalHerbivoren());
@@ -53,16 +59,20 @@ public class DierTest {
 	public void testHerbivorenVrijen() {
 		System.out.println("testHerbivorenVrijen");
 		controller.initMatrix();
-		controller.plaatsOrganisme(new Herbivoor(), 4, 2);
+
+		Herbivoor herbivoor = new Herbivoor();
+
+		controller.plaatsOrganisme(herbivoor, 4, 2);
 		controller.plaatsOrganisme(new Herbivoor(), 4, 3);
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(2, controller.getAantalHerbivoren());
 
-		controller.dagActies();
+		herbivoor.ageer();
+		Terrarium.INSTANCE.voegBabyHerbivorenToe();
 
-		System.out.println(controller.getTerrarium());
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(3, controller.getAantalHerbivoren());
 

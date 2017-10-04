@@ -105,7 +105,7 @@ public enum Terrarium {
 		aantalBabyHerbivoren = 0;
 	}
 
-	public void dagActies(String simpleClassName) {
+	private void dagActies(String simpleClassName) {
 		for (int y = 0; y < getHoogte(); y++) {
 			for (int x = 0; x < getBreedte(); x++) {
 				Cel cel = matrix[y][x];
