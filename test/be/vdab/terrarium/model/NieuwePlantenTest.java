@@ -2,20 +2,21 @@ package be.vdab.terrarium.model;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class NieuwePlantenTest {
 
-	@Test
-	public void getAantalPlantenIs6() {
-		Terrarium.INSTANCE.voegNieuwePlantenToe();
-		assertEquals(5, Terrarium.INSTANCE.getAantalPlanten());
+	@Before
+	public void before() {
+		Terrarium.INSTANCE.initStartOrganismen();
+		System.out.println(Terrarium.INSTANCE);
 	}
 
-	public static void main(String[] args) {
-		Terrarium.INSTANCE.initStartOrganismen();
+	@Test
+	public void getAantalPlantenIs6NaToevoegenNieuwePlanten() {
 		Terrarium.INSTANCE.voegNieuwePlantenToe();
-		System.out.println(Terrarium.INSTANCE);
+		assertEquals(6, Terrarium.INSTANCE.getAantalPlanten());
 	}
 
 }
