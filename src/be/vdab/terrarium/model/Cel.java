@@ -60,9 +60,9 @@ public class Cel {
 
 	@Override
 	public String toString() {
-		if (this.organisme != null) {
-			return organisme.toString();
-		}
-		return ".";
+		return "Cel [y=" + y + ", x=" + x + ", organisme=" + organisme + ", getOrganisme()=" + getOrganisme()
+				+ ", getY()=" + getY() + ", getX()=" + getX() + ", hashCode()=" + hashCode() + ", getClass()="
+				+ getClass() + ", toString()=" + super.toString() + "]";
 	}
+
 }

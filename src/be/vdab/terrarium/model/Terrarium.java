@@ -105,12 +105,12 @@ public enum Terrarium {
 		aantalBabyHerbivoren = 0;
 	}
 
-	private void dagActies(String letter) {
+	public void dagActies(String simpleClassName) {
 		for (int y = 0; y < getHoogte(); y++) {
 			for (int x = 0; x < getBreedte(); x++) {
 				Cel cel = matrix[y][x];
 				Organisme organisme = cel.getOrganisme();
-				if (cel.toString().equals(letter)) {
+				if (organisme != null && organisme.getClass().getSimpleName().equals(simpleClassName)) {
 					if (!organisme.heeftGeageerd()) {
 						organisme.ageer();
 					}
@@ -124,17 +124,19 @@ public enum Terrarium {
 	}
 
 	public void dagActies() {
-		dagActies("H");
-		dagActies("C");
+		dagActies("Herbivoor");
+		dagActies("Carnivoor");
 		voegBabyHerbivorenToe();
 	}
 
-	private int getAantalOrganismen(String letter) {
+	private int getAantalOrganismen(String simpleClassName) {
 		int aantal = 0;
 		for (int y = 0; y < getHoogte(); y++) {
 			for (int x = 0; x < getBreedte(); x++) {
-				if (matrix[y][x].toString().equals(letter))
+				Organisme organisme = matrix[y][x].getOrganisme();
+				if (organisme != null && organisme.getClass().getSimpleName().equals(simpleClassName)) {
 					aantal++;
+				}
 			}
 		}
 		return aantal;
@@ -142,42 +144,21 @@ public enum Terrarium {
 
 	// voor test
 	public int getAantalPlanten() {
-		return getAantalOrganismen("P");
+		return getAantalOrganismen("Plant");
 	}
 
 	// voor test
 	public int getAantalHerbivoren() {
-		return getAantalOrganismen("H");
+		return getAantalOrganismen("Herbivoor");
 	}
 
 	// voor test
 	public int getAantalCarnivoren() {
-		return getAantalOrganismen("C");
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder output = new StringBuilder();
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[i].length; j++) {
-				output.append(matrix[i][j].toString() + "  ");
-			}
-			output.append("\n");
-		}
-		return output.toString();
+		return getAantalOrganismen("Carnivoor");
 	}
 
 	public void verhoogBabyHerbivoren() {
 		aantalBabyHerbivoren++;
 	}
 	
-	public void verplaatsOrganismeNaarLegeCel(Organisme organisme) {
-		Collections.shuffle(legeCellen);
-		if (!legeCellen.isEmpty()) {
-			Cel cel = legeCellen.get(0);
-			cel.setOrganisme(organisme);
-		}
-	}
-
-
 }

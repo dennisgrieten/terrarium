@@ -25,6 +25,10 @@ public class Controller {
 		Terrarium.INSTANCE.dagActies();
 	}
 
+	public void dagActies(String simpleClassName) {
+		Terrarium.INSTANCE.dagActies(simpleClassName);
+	}
+
 	public void plaatsOrganisme(Organisme organisme, int y, int x) {
 		Terrarium.INSTANCE.plaatsOrganisme(organisme, y, x);
 	}
