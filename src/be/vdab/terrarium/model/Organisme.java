@@ -30,6 +30,7 @@ public abstract class Organisme {
 
 	public void sterf() {
 		this.cel.unSetOrganisme();
+		this.setCel(null);
 	}
 
 	public Cel getRechterBuurCel() {
@@ -87,6 +88,10 @@ public abstract class Organisme {
 
 	public Organisme getOnderBuur() {
 		return getBovenBuurCel().getOrganisme();
+	}
+	
+	public void addLevenskracht(int kracht) {
+		this.levenskracht += kracht;
 	}
 
 }

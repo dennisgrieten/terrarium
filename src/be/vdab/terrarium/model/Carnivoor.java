@@ -20,13 +20,6 @@ public class Carnivoor extends Dier {
 		}
 	}
 
-	private void vecht() {
-		// Organisme buur = getRechterBuur();
-		// if (buur == null || !(buur instanceof Carnivoor)) {
-		// throw new IllegalStateException();
-		// }
-	}
-
 	@Override
 	public String toString() {
 		return "Carnivoor [heeftGeageerd()=" + heeftGeageerd() + ", getLevenskracht()=" + getLevenskracht()

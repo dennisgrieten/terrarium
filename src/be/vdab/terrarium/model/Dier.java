@@ -28,6 +28,22 @@ public abstract class Dier extends Organisme {
 					dezeCel.getX(), dezeCel.getY(), slachtofferCel.getX(), slachtofferCel.getY()));
 		}
 
+		super.addLevenskracht(slachtoffer.getLevenskracht());
+		slachtoffer.sterf();
+		this.setHeeftGeageerd(true);
+	}
+
+	protected void eet(Organisme tegenstander) {
+		Cel dezeCel = super.getCel();
+		Organisme slachtoffer = getRechterBuurCel().getOrganisme();
+
+		// indien slachtoffer NULL
+		if (slachtoffer == null) {
+			Cel slachtofferCel = slachtoffer.getCel();
+			throw new NullPointerException(String.format("Dier %1$d, %2$d krijgt NULL(%3$d, %4$d) te eten",
+					dezeCel.getX(), dezeCel.getY(), slachtofferCel.getX(), slachtofferCel.getY()));
+		}
+
 		super.setLevenskracht(super.getLevenskracht() + slachtoffer.getLevenskracht());
 		slachtoffer.sterf();
 		this.setHeeftGeageerd(true);
@@ -61,6 +77,18 @@ public abstract class Dier extends Organisme {
 			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme(), legeBuren);
 			dezeCel.unSetOrganisme();
 			this.setHeeftGeageerd(true);
+		}
+	}
+	
+	protected void vecht() {
+		Organisme tegenstander = getRechterBuur();
+		if (this.getLevenskracht() > tegenstander.getLevenskracht()) {
+			this.addLevenskracht(tegenstander.getLevenskracht());
+			tegenstander.sterf();
+			this.setHeeftGeageerd(true);
+		} else if (this.getLevenskracht() < tegenstander.getLevenskracht()) {
+			tegenstander.addLevenskracht(this.getLevenskracht());
+			this.sterf();
 		}
 	}
 }

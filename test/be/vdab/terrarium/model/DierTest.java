@@ -171,6 +171,78 @@ public class DierTest {
 		assertEquals(1, herbivoor.getCel().getX());
 	}
 	
-	
+	@Test
+	public void testVechtRechtseZwakker() {
+		System.out.println("testVechtRechtseZwakker");
+		controller.initMatrix();
+		
+		Carnivoor carnivoorSterk = new Carnivoor();
+		carnivoorSterk.setLevenskracht(2);
+		Carnivoor carnivoorZwak = new Carnivoor();
+		carnivoorZwak.setLevenskracht(1);
+		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
+		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 
+		System.out.println(controller.getTerrarium());
+
+		Cel celZwak = carnivoorZwak.getCel();
+		carnivoorSterk.vecht();
+
+		System.out.println(controller.getTerrarium());
+
+		assertEquals(3, carnivoorSterk.getLevenskracht());
+
+		assertEquals(null, celZwak.getOrganisme());
+		
+	}
+	
+	@Test
+	public void testVechtLinkseZwakker() {
+		System.out.println("testVechtLinkseZwakker");
+		controller.initMatrix();
+		
+		Carnivoor carnivoorSterk = new Carnivoor();
+		carnivoorSterk.setLevenskracht(2);
+		Carnivoor carnivoorZwak = new Carnivoor();
+		carnivoorZwak.setLevenskracht(1);
+		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
+		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
+
+		System.out.println(controller.getTerrarium());
+
+		Cel celZwak = carnivoorZwak.getCel();
+		carnivoorZwak.vecht();
+
+		System.out.println(controller.getTerrarium());
+
+		assertEquals(3, carnivoorSterk.getLevenskracht());
+
+		assertEquals(null, celZwak.getOrganisme());
+		
+	}
+	
+	@Test
+	public void testVechtOnbeslist() {
+		System.out.println("testVechtOnbeslist");
+		controller.initMatrix();
+		
+		Carnivoor carnivoorSterk = new Carnivoor();
+		carnivoorSterk.setLevenskracht(2);
+		Carnivoor carnivoorZwak = new Carnivoor();
+		carnivoorZwak.setLevenskracht(2);
+		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
+		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
+
+		System.out.println(controller.getTerrarium());
+
+		Cel celZwak = carnivoorZwak.getCel();
+		carnivoorZwak.vecht();
+
+		System.out.println(controller.getTerrarium());
+
+		assertEquals(2, carnivoorSterk.getLevenskracht());
+		assertEquals(2, carnivoorZwak.getLevenskracht());
+
+	}
+	
 }
