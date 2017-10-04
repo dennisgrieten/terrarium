@@ -36,6 +36,9 @@ public enum Terrarium {
 	public int getBreedte() {
 		return DIMENSIE;
 	}
+	public List<Cel> getLegeCellen() {
+	    return this.legeCellen;
+    }
 
 	public void initMatrix() {
 		legeCellen.clear();
@@ -60,14 +63,12 @@ public enum Terrarium {
 		for (Organisme organisme : organismen) {
 			int n = random.nextInt(legeCellen.size());
 			legeCellen.get(n).setOrganisme(organisme);
-			legeCellen.remove(n);
 		}
 	}
 
 	public void plaatsOrganisme(Organisme organisme, int y, int x) {
 		Cel cel = matrix[y][x];
 		cel.setOrganisme(organisme);
-		legeCellen.remove(cel);
 	}
 
 	public void plaatsOrganisme(Organisme organisme, ArrayList<Cel> legeBuren) {
@@ -80,7 +81,7 @@ public enum Terrarium {
 		for (int i = 0; i < AANTAL_NIEUWE_PLANTEN_PER_DAG; i++) {
 			if (legeCellen.isEmpty())
 				break;
-			Cel cel = legeCellen.remove(0);
+			Cel cel = legeCellen.get(0);
 			cel.setOrganisme(new Plant());
 		}
 	}
@@ -90,7 +91,7 @@ public enum Terrarium {
 		for (int i = 0; i < aantal; i++) {
 			if (legeCellen.isEmpty())
 				break;
-			Cel cel = legeCellen.remove(0);
+			Cel cel = legeCellen.get(0);
 			cel.setOrganisme(new Herbivoor());
 		}
 	}

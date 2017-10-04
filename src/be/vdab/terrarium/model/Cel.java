@@ -17,10 +17,12 @@ public class Cel {
 	public void setOrganisme(Organisme organisme) {
 		this.organisme = organisme;
 		this.organisme.setCel(this); // megeven van pointer naar deze cel
+		Terrarium.INSTANCE.getLegeCellen().remove(this);
 	}
 
 	public void unSetOrganisme() {
 		this.organisme = null;
+		Terrarium.INSTANCE.getLegeCellen().add(this);
 	}
 
 	public Organisme getOrganisme() {
