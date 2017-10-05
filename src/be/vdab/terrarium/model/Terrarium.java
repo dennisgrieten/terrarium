@@ -193,4 +193,8 @@ public enum Terrarium {
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
         return true;
     }
+
+    public boolean isValideAantalNieuwePlanten(int planten) {
+        return planten > 0;
+    }
 }
