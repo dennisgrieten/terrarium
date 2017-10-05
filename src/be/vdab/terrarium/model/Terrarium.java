@@ -7,13 +7,9 @@ import java.util.Random;
 public enum Terrarium {
     INSTANCE;
 
-    public static final int AANTAL_NIEUWE_PLANTEN_PER_DAG = 2;
-
     private final Random random = new Random();
-    private final Organisme[] startOrganismen = {new Plant(), new Plant(), new Plant(), new Plant(), new Herbivoor(),
-            new Herbivoor(), new Herbivoor(), new Herbivoor(), new Herbivoor(), new Carnivoor(), new Carnivoor(),
-            new Carnivoor()};
     private static Cel[][] matrix;
+    public static int aantalNieuwePlantenPerDag;
     private static int aantalBabyHerbivoren;
     private static int breedte;
     private static int hoogte;
@@ -55,12 +51,20 @@ public enum Terrarium {
     }
 
     // aparte init voor startorganismen om zo een leeg veld te krijgen
-    public void initStartOrganismen() {
-        // vul matrix met start organismen
-        plaatsOrganisme(startOrganismen);
+    public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren) {
+        if (isValideAantalNieuwePlanten(plantenPerDag)) {
+            aantalNieuwePlantenPerDag = plantenPerDag;
+        }
+
+        if (isValideAantalOrganismen(planten, herbivoren, carnivoren)) {
+            voegNieuwePlantenToe(planten);
+            voegNieuweHerbivorenToe(herbivoren);
+            voegNieuweCarnivorenToe(carnivoren);
+        }
     }
 
     // plaats organismen uit een array op random plaatsen in de matrix
+    // wordt niet meer gebruikt na flexibel terrarium
     public void plaatsOrganisme(Organisme[] organismen) {
         for (Organisme organisme : organismen) {
             if (!legeCellen.isEmpty()) {
@@ -97,7 +101,13 @@ public enum Terrarium {
     }
 
     public void voegNieuwePlantenToe() {
-        for (int i = 0; i < AANTAL_NIEUWE_PLANTEN_PER_DAG; i++) {
+        for (int i = 0; i < aantalNieuwePlantenPerDag; i++) {
+            plaatsOrganisme(new Plant());
+        }
+    }
+
+    public void voegNieuwePlantenToe(int aantal) {
+        for (int i = 0; i < aantal; i++) {
             plaatsOrganisme(new Plant());
         }
     }
@@ -105,6 +115,12 @@ public enum Terrarium {
     public void voegNieuweHerbivorenToe(int aantal) {
         for (int i = 0; i < aantal; i++) {
             plaatsOrganisme(new Herbivoor());
+        }
+    }
+
+    public void voegNieuweCarnivorenToe(int aantal) {
+        for (int i = 0; i < aantal; i++) {
+            plaatsOrganisme(new Carnivoor());
         }
     }
 
@@ -150,6 +166,7 @@ public enum Terrarium {
         }
     }
 
+    // voor test
     private int getAantalOrganismen(String simpleClassName) {
         int aantal = 0;
         for (int y = 0; y < getHoogte(); y++) {
@@ -186,15 +203,24 @@ public enum Terrarium {
         return hoogte <= 25 && hoogte >= 6;
     }
 
-    public boolean isValideBreedte(int hoogte, int breedte ) {
+    public boolean isValideBreedte(int hoogte, int breedte) {
         return hoogte >= breedte && breedte >= 6;
     }
 
+    // TODO
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
-        return true;
+        int minimum = 2;
+        // totaal van organismen mag niet groter zijn dan 50% van het aantal cellen
+        if (planten >= minimum &&
+                herbivoren >= minimum &&
+                carnivoren >= minimum &&
+                (planten + herbivoren + carnivoren) > ((hoogte * breedte) / 2)) {
+            return true;
+        }
+        return false;
     }
 
-    public boolean isValideAantalNieuwePlanten(int planten, int hoogte, int breedte) {
+    public boolean isValideAantalNieuwePlanten(int planten) {
         return planten > 0 && planten <= ((hoogte * breedte) * 0.05);
     }
 }
