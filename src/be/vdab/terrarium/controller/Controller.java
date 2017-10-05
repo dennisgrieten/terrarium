@@ -9,8 +9,8 @@ public class Controller {
 		return Terrarium.INSTANCE;
 	}
 
-	public void initMatrix() {
-		Terrarium.INSTANCE.initMatrix();
+	public void initMatrix(int breedte, int hoogte) {
+		Terrarium.INSTANCE.initMatrix(breedte, hoogte);
 	}
 
 	public void initStartOrganismen() {
@@ -26,7 +26,7 @@ public class Controller {
 	}
 
 	public void plaatsOrganisme(Organisme organisme, int y, int x) {
-		Terrarium.INSTANCE.verplaatsOrganisme(organisme, y, x);
+		Terrarium.INSTANCE.plaatsOrganisme(organisme, y, x);
 	}
 
 	public int getAantalHerbivoren() {

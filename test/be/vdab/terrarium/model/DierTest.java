@@ -13,7 +13,7 @@ public class DierTest {
 	@Test
 	public void testHerbivoorEetPlant() {
 		System.out.println("testHerbivoorEetPlant");
-		controller.initMatrix();
+		controller.initMatrix(6, 6);
 
 		Herbivoor herbivoor = new Herbivoor();
 
@@ -36,7 +36,7 @@ public class DierTest {
 	@Test
 	public void testCarnivoorEetHerbivoor() {
 		System.out.println("testCarnivoorEetHerbivoor");
-		controller.initMatrix();
+		controller.initMatrix(6,6);
 		Carnivoor carnivoor = new Carnivoor();
 
 		controller.plaatsOrganisme(carnivoor, 0, 0);
@@ -58,7 +58,7 @@ public class DierTest {
 	@Test
 	public void testHerbivorenVrijen() {
 		System.out.println("testHerbivorenVrijen");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		Herbivoor herbivoor = new Herbivoor();
 
@@ -81,7 +81,7 @@ public class DierTest {
 	@Test
 	public void testBeweegNaarRechts() {
 		System.out.println("testBeweegNaarRechts");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		controller.plaatsOrganisme(new Plant(), 1, 0);
 		Herbivoor herbivoor = new Herbivoor();
@@ -101,7 +101,7 @@ public class DierTest {
 	@Test
 	public void testBeweegNaarLinks() {
 		System.out.println("testBeweegNaarLinks");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
 		controller.plaatsOrganisme(new Herbivoor(), 1, 1);
@@ -121,7 +121,7 @@ public class DierTest {
 	@Test
 	public void testBeweegNaarBoven() {
 		System.out.println("testBeweegNaarBoven");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		controller.plaatsOrganisme(new Herbivoor(), 1, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 1, 2);
@@ -142,7 +142,7 @@ public class DierTest {
 	@Test
 	public void testBeweegNaarBeneden() {
 		System.out.println("testBeweegNaarBeneden");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		controller.plaatsOrganisme(new Herbivoor(), 0, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
@@ -162,7 +162,7 @@ public class DierTest {
 	@Test
 	public void testBeweegNiet() {
 		System.out.println("testBeweegNiet");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		controller.plaatsOrganisme(new Herbivoor(), 0, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
@@ -182,8 +182,8 @@ public class DierTest {
 
 	@Test
 	public void testMagicJump() {
-		System.out.println("testBeweegNaarBoven");
-		controller.initMatrix();
+		System.out.println("testMagicJump");
+        controller.initMatrix(6,6);
 
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, controller.getTerrarium().getBreedte() - 1);
@@ -206,7 +206,7 @@ public class DierTest {
 	@Test
 	public void testVechtRechtseZwakker() {
 		System.out.println("testVechtRechtseZwakker");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);
@@ -231,7 +231,7 @@ public class DierTest {
 	@Test
 	public void testVechtLinkseZwakker() {
 		System.out.println("testVechtLinkseZwakker");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);
@@ -256,7 +256,7 @@ public class DierTest {
 	@Test
 	public void testVechtOnbeslist() {
 		System.out.println("testVechtOnbeslist");
-		controller.initMatrix();
+        controller.initMatrix(6,6);
 
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);

@@ -14,6 +14,7 @@ public class TerrariumTest {
 	@Before
 	public void before() {
 		controller = new Controller();
+		controller.initMatrix(6,6);
 		controller.initStartOrganismen();
 	}
 
