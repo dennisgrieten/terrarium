@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import be.vdab.terrarium.controller.Controller;
 import be.vdab.terrarium.model.Cel;
@@ -20,16 +21,14 @@ public class TerrariumPanel extends JPanel {
 	private static final ImageIcon herbivoorIcon = new ImageIcon("images/herbivoor.png");
 	private static final ImageIcon carnivoorIcon = new ImageIcon("images/carnivoor.png");
 
-	private Cel[][] matrix;
 	private int hoogte;
 	private int breedte;
 
 	private JLabel[][] labels;
 
 	public TerrariumPanel() {
+		setBorder(new EmptyBorder(10, 10, 10, 10));
 		Terrarium terrarium = new Controller().getTerrarium();
-		terrarium.initStartOrganismen();
-		matrix = terrarium.getMatrix();
 		hoogte = terrarium.getHoogte();
 		breedte = terrarium.getBreedte();
 		labels = new JLabel[hoogte][breedte];
@@ -37,6 +36,7 @@ public class TerrariumPanel extends JPanel {
 		for (int y = 0; y < hoogte; y++) {
 			for (int x = 0; x < breedte; x++) {
 				labels[y][x] = new JLabel(nietsIcon);
+				labels[y][x].setBorder(new EmptyBorder(2, 2, 2, 2));
 				add(labels[y][x]);
 			}
 		}
@@ -44,6 +44,8 @@ public class TerrariumPanel extends JPanel {
 	}
 
 	public void update() {
+		Terrarium terrarium = new Controller().getTerrarium();
+		Cel[][] matrix = terrarium.getMatrix();
 		for (int y = 0; y < hoogte; y++) {
 			for (int x = 0; x < breedte; x++) {
 				Organisme organisme = matrix[y][x].getOrganisme();
