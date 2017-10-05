@@ -15,14 +15,15 @@ public class Cel {
 	}
 
 	public void setOrganisme(Organisme organisme) {
+		Terrarium.INSTANCE.getLegeCellen().remove(this);
 		this.organisme = organisme;
 		this.organisme.setCel(this); // megeven van pointer naar deze cel
-		Terrarium.INSTANCE.getLegeCellen().remove(this);
 	}
 
 	public void unSetOrganisme() {
-		this.organisme = null;
 		Terrarium.INSTANCE.getLegeCellen().add(this);
+		this.organisme = null;
+		System.out.println(Terrarium.INSTANCE.getLegeCellen().contains(this));
 	}
 
 	public Organisme getOrganisme() {
@@ -37,25 +38,26 @@ public class Cel {
 		return x;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj instanceof Cel) {
-			Cel other = (Cel) obj;
-			return y == other.y && x == other.x && Objects.equals(organisme, other.organisme);
-		} else {
-			return false;
-		}
-	}
-
 	public boolean isLeeg() {
 		return organisme == null;
 	}
 
 	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Cel cel = (Cel) o;
+
+		if (y != cel.y) return false;
+		return x == cel.x;
+	}
+
+	@Override
 	public int hashCode() {
-		return Objects.hash(x, y, organisme);
+		int result = y;
+		result = 31 * result + x;
+		return result;
 	}
 
 	@Override

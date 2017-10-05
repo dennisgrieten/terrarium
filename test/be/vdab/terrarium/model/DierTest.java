@@ -181,6 +181,29 @@ public class DierTest {
 	}
 
 	@Test
+	public void testMagicJump() {
+		System.out.println("testBeweegNaarBoven");
+		controller.initMatrix();
+
+		Herbivoor herbivoor = new Herbivoor();
+		controller.plaatsOrganisme(herbivoor, 0, controller.getTerrarium().getBreedte() - 1);
+		assertEquals(1, controller.getTerrarium().getAantalHerbivoren());   // check aantal herbivoren
+
+		int oudeX = herbivoor.getCel().getX();
+		int oudeY = herbivoor.getCel().getY();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+		herbivoor.beweeg();
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		int nieuweX = herbivoor.getCel().getX();
+		int nieuweY = herbivoor.getCel().getY();
+
+		assertTrue((oudeX != nieuweX) || (oudeY != nieuweY));
+        assertEquals(1, controller.getTerrarium().getAantalHerbivoren());   // check aantal herbivoren
+	}
+
+	@Test
 	public void testVechtRechtseZwakker() {
 		System.out.println("testVechtRechtseZwakker");
 		controller.initMatrix();

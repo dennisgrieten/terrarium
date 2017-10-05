@@ -34,32 +34,32 @@ public abstract class Dier extends Organisme {
 	public void beweeg() {
 		Cel dezeCel = super.getCel();
 		if (dezeCel.getX() == Terrarium.INSTANCE.getBreedte() - 1) {
-			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme()); // DIT IS DE MAGIC JUMP
+			Terrarium.INSTANCE.verplaatsOrganisme(this); // DIT IS DE MAGIC JUMP
+		} else {
+			ArrayList<Cel> legeBuren = new ArrayList<>();
+			Cel rechterbuur = this.getRechterBuurCel();
+			if ((rechterbuur != null) && (rechterbuur.isLeeg())) {
+				legeBuren.add(rechterbuur);
+			}
+			Cel bovenbuur = this.getBovenBuurCel();
+			if ((bovenbuur != null) && (bovenbuur.isLeeg())) {
+				legeBuren.add(bovenbuur);
+			}
+			Cel onderbuur = this.getOnderBuurCel();
+			if ((onderbuur != null) && (onderbuur.isLeeg())) {
+				legeBuren.add(onderbuur);
+			}
+			Cel linkerbuur = this.getLinkerBuurCel();
+			if ((linkerbuur != null) && (linkerbuur.isLeeg())) {
+				legeBuren.add(linkerbuur);
+			}
+			if (legeBuren.size() > 0) {
+				Terrarium.INSTANCE.verplaatsOrganisme(this, legeBuren);
+				dezeCel.unSetOrganisme();
+				this.setHeeftGeageerd(true);
+			}
 		}
 
-		ArrayList<Cel> legeBuren = new ArrayList<>();
-		Cel rechterbuur = dezeCel.getOrganisme().getRechterBuurCel();
-		if ((rechterbuur != null) && (rechterbuur.isLeeg())) {
-			legeBuren.add(rechterbuur);
-		}
-		Cel bovenbuur = dezeCel.getOrganisme().getBovenBuurCel();
-		if ((bovenbuur != null) && (bovenbuur.isLeeg())) {
-			legeBuren.add(bovenbuur);
-		}
-		Cel onderbuur = dezeCel.getOrganisme().getOnderBuurCel();
-		if ((onderbuur != null) && (onderbuur.isLeeg())) {
-			legeBuren.add(onderbuur);
-		}
-		Cel linkerbuur = dezeCel.getOrganisme().getLinkerBuurCel();
-		if ((linkerbuur != null) && (linkerbuur.isLeeg())) {
-			legeBuren.add(linkerbuur);
-		}
-
-		if (legeBuren.size() > 0) {
-			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme(), legeBuren);
-			dezeCel.unSetOrganisme();
-			this.setHeeftGeageerd(true);
-		}
 	}
 
 	protected void vecht() {

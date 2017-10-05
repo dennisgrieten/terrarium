@@ -26,7 +26,7 @@ public class Controller {
 	}
 
 	public void plaatsOrganisme(Organisme organisme, int y, int x) {
-		Terrarium.INSTANCE.plaatsOrganisme(organisme, y, x);
+		Terrarium.INSTANCE.verplaatsOrganisme(organisme, y, x);
 	}
 
 	public int getAantalHerbivoren() {

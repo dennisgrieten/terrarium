@@ -56,29 +56,30 @@ public enum Terrarium {
 	public void initStartOrganismen() {
 		// vul matrix met start organismen
 		initMatrix();
-		plaatsOrganisme(startOrganismen);
+		verplaatsOrganisme(startOrganismen);
 	}
 
 	// plaats organismen uit een array op random plaatsen in de matrix
-	public void plaatsOrganisme(Organisme[] organismen) {
+	public void verplaatsOrganisme(Organisme[] organismen) {
 		for (Organisme organisme : organismen) {
 			int n = random.nextInt(legeCellen.size());
 			legeCellen.get(n).setOrganisme(organisme);
 		}
 	}
 
-	public void plaatsOrganisme(Organisme organisme, int y, int x) {
+	public void verplaatsOrganisme(Organisme organisme, int y, int x) {
 		Cel cel = matrix[y][x];
 		cel.setOrganisme(organisme);
 	}
 
-	public void plaatsOrganisme(Organisme organisme, List<Cel> legeCellen) {
+	public void verplaatsOrganisme(Organisme organisme, List<Cel> legeCellen) {
 		int n = random.nextInt(legeCellen.size());
+		organisme.getCel().unSetOrganisme();
 		legeCellen.get(n).setOrganisme(organisme);
 	}
 
-	public void plaatsOrganisme(Organisme organisme) {
-		plaatsOrganisme(organisme, legeCellen);
+	public void verplaatsOrganisme(Organisme organisme) {
+		verplaatsOrganisme(organisme, this.legeCellen);
 	}
 
 	public void voegNieuwePlantenToe() {
