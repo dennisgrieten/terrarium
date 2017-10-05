@@ -58,6 +58,8 @@ public class Console {
 		int aantalHerbivoren = 0;
 		int aantalCarnivoren = 0;
 		String errorMelding = null;
+
+		System.out.println();
 		
 		do {
 			if (errorMelding != null) {
@@ -68,18 +70,20 @@ public class Console {
 			aantalPlantenPerDag = geefAantalPlantenPerDag(scanner);
 			aantalHerbivoren = geefAantalHerbivoren(scanner);
 			aantalCarnivoren = geefAantalCarnivoren(scanner);
-			errorMelding = "Validatie van inputgegevens is fout gegaan. Geef opnieuw in. ";
-			System.out.println("isValideAantalOrganismen= " + controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren));
-			System.out.println("isValideAantalNieuwePlanten= " + controller.isValideAantalNieuwePlanten(aantalPlanten));
+			errorMelding = "Ingegeven data is foutief. Gelieve de data opnieuw in te geven. ";
+//			System.out.println("isValideAantalOrganismen= " + controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren));
+//			System.out.println("isValideAantalNieuwePlanten= " + controller.isValideAantalNieuwePlanten(aantalPlanten));
 		} while ((!controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren)
 				|| (!controller.isValideAantalNieuwePlanten(aantalPlanten))));
 
+		System.out.println();
 		System.out.println("hoogte= " + hoogte);
 		System.out.println("breedte= " + breedte);
 		System.out.println("aantalPlanten= " + aantalPlanten);
 		System.out.println("aantalHerbivoren= " + aantalHerbivoren);
 		System.out.println("aantalCarnivoren= " + aantalCarnivoren);
-
+		System.out.println();
+		
 		// init matrix met TIJDELIJKE startwaarden, pas aan voor flexibel console view
 		// controller.initMatrix(8, 8);
 		controller.initStartOrganismen(aantalPlanten, aantalPlantenPerDag, aantalHerbivoren, aantalCarnivoren);
@@ -102,7 +106,6 @@ public class Console {
 		System.out.print(message);
 		int hoogte = getNumericValue(scanner, message);
 
-//		System.out.println("hoogte= " + hoogte);
 		while (!controller.isValideHoogte(hoogte)) {
 			System.out.print(message);
 			hoogte = getNumericValue(scanner, message);
@@ -122,7 +125,7 @@ public class Console {
 	}
 
 	private static int geefAantalPlanten(Scanner scanner) {
-		String message = "     Geef aantal planten (minimum 2): ";
+		String message = "     Geef aantal planten: ";
 		System.out.print(message);
 		int aantalPlanten = getNumericValue(scanner, message);
 		return aantalPlanten;
@@ -136,14 +139,14 @@ public class Console {
 	}
 
 	private static int geefAantalHerbivoren(Scanner scanner) {
-		String message = "     Geef aantal herbivoren (minimum 2): ";
+		String message = "     Geef aantal herbivoren: ";
 		System.out.print(message);
 		int aantalHerbivoren = getNumericValue(scanner, message);
 		return aantalHerbivoren;
 	}
 
 	private static int geefAantalCarnivoren(Scanner scanner) {
-		String message = "     Geef aantal carnivoren (minimum 2): ";
+		String message = "     Geef aantal carnivoren: ";
 		System.out.print(message);
 		int aantalCarnivoren = getNumericValue(scanner, message);
 		return aantalCarnivoren;
