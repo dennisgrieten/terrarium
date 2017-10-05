@@ -1,4 +1,4 @@
-package be.vdab.terrarium.view;
+package be.vdab.terrarium.view.swing;
 
 import java.awt.GridLayout;
 

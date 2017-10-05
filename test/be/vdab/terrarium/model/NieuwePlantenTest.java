@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import be.vdab.terrarium.view.Console;
+import be.vdab.terrarium.view.console.Console;
 
 public class NieuwePlantenTest {
 

@@ -1,4 +1,4 @@
-package be.vdab.terrarium.view;
+package be.vdab.terrarium.view.swing;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -45,7 +45,7 @@ public class TerrariumFrame extends JFrame {
 		super("Terrarium");
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
-		
+		controller.initMatrix(8,8);
 		controller.initStartOrganismen();
 		linksPanel = new TerrariumPanel();
 		add(linksPanel);

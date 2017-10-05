@@ -1,6 +1,6 @@
 package be.vdab.terrarium.model;
 
-import be.vdab.terrarium.view.Console;
+import be.vdab.terrarium.view.console.Console;
 
 public class TerrariumPrint {
 

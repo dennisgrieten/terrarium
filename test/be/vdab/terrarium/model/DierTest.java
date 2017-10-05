@@ -1,7 +1,7 @@
 package be.vdab.terrarium.model;
 
 import be.vdab.terrarium.controller.Controller;
-import be.vdab.terrarium.view.Console;
+import be.vdab.terrarium.view.console.Console;
 
 import org.junit.Test;
 
