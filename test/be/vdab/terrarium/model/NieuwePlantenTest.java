@@ -10,18 +10,18 @@ import be.vdab.terrarium.view.console.Console;
 
 public class NieuwePlantenTest {
 
-	@Before
-	public void before() {
-		Controller controller = new Controller();
-		controller.initMatrix(6,6);
-		controller.initStartOrganismen();
-		System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
-	}
+    @Before
+    public void before() {
+        Controller controller = new Controller();
+        controller.initMatrix(6, 6);
+        controller.initStartOrganismen();
+        System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
+    }
 
-	@Test
-	public void getAantalPlantenIs6NaToevoegenNieuwePlanten() {
-		Terrarium.INSTANCE.voegNieuwePlantenToe();
-		assertEquals(6, Terrarium.INSTANCE.getAantalPlanten());
-	}
+    @Test
+    public void getAantalPlantenIs6NaToevoegenNieuwePlanten() {
+        Terrarium.INSTANCE.voegNieuwePlantenToe();
+        assertEquals(6, Terrarium.INSTANCE.getAantalPlanten());
+    }
 
 }
