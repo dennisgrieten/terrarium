@@ -208,10 +208,8 @@ public class DierTest {
 		System.out.println("testVechtRechtseZwakker");
         controller.initMatrix(6,6);
 
-		Carnivoor carnivoorSterk = new Carnivoor();
-		carnivoorSterk.setLevenskracht(2);
-		Carnivoor carnivoorZwak = new Carnivoor();
-		carnivoorZwak.setLevenskracht(1);
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Carnivoor carnivoorZwak = new Carnivoor(1);
 		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 
@@ -233,10 +231,8 @@ public class DierTest {
 		System.out.println("testVechtLinkseZwakker");
         controller.initMatrix(6,6);
 
-		Carnivoor carnivoorSterk = new Carnivoor();
-		carnivoorSterk.setLevenskracht(2);
-		Carnivoor carnivoorZwak = new Carnivoor();
-		carnivoorZwak.setLevenskracht(1);
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Carnivoor carnivoorZwak = new Carnivoor(1);
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
 
@@ -258,10 +254,8 @@ public class DierTest {
 		System.out.println("testVechtOnbeslist");
         controller.initMatrix(6,6);
 
-		Carnivoor carnivoorSterk = new Carnivoor();
-		carnivoorSterk.setLevenskracht(2);
-		Carnivoor carnivoorZwak = new Carnivoor();
-		carnivoorZwak.setLevenskracht(2);
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Carnivoor carnivoorZwak = new Carnivoor(2);
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
 

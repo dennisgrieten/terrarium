@@ -2,6 +2,10 @@ package be.vdab.terrarium.model;
 
 public class Plant extends Organisme {
 
+	public Plant() {
+		super(1);
+	}
+	
     @Override
     public void ageer() {
         // Niets.

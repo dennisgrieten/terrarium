@@ -2,6 +2,13 @@ package be.vdab.terrarium.model;
 
 public class Herbivoor extends Dier {
 
+	public Herbivoor() {
+	}
+		
+	public Herbivoor(int levenskracht) {
+		super(levenskracht);
+	}
+	
 	@Override
 	public void ageer() {
 		Organisme rechterbuur = getRechterBuur();

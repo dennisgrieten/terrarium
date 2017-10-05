@@ -47,7 +47,7 @@ public class Console {
 
 		// init matrix met TIJDELIJKE startwaarden, pas aan voor flexibel console view
 		controller.initMatrix(8,8);
-		controller.initStartOrganismen();
+		controller.initStartOrganismen(4,2,5,3);
 		do {
 			System.out.println("Begin dag " + dagCounter + "\n" + getStringRepresentation(controller.getTerrarium()));
 			controller.dagActies();

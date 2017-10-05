@@ -8,11 +8,11 @@ public enum Terrarium {
     INSTANCE;
 
     private final Random random = new Random();
-    private static Cel[][] matrix;
-    public static int aantalNieuwePlantenPerDag;
-    private static int aantalBabyHerbivoren;
-    private static int breedte;
-    private static int hoogte;
+    private Cel[][] matrix;
+    public int aantalNieuwePlantenPerDag;
+    private int aantalBabyHerbivoren;
+    private int breedte;
+    private int hoogte;
     private List<Cel> legeCellen;
 
 
@@ -37,8 +37,8 @@ public enum Terrarium {
     }
 
     public void initMatrix(int breedte, int hoogte) {
-        Terrarium.breedte = breedte;
-        Terrarium.hoogte = hoogte;
+        this.breedte = breedte;
+        this.hoogte = hoogte;
         legeCellen.clear();
         matrix = new Cel[hoogte][breedte];
         // initialiseer cellen in de matrix met coördinaten
@@ -58,7 +58,7 @@ public enum Terrarium {
 
         if (isValideAantalOrganismen(planten, herbivoren, carnivoren)) {
             voegNieuwePlantenToe(planten);
-            voegNieuweHerbivorenToe(herbivoren);
+            voegNieuweHerbivorenToe(herbivoren,1);
             voegNieuweCarnivorenToe(carnivoren);
         }
     }
@@ -112,9 +112,9 @@ public enum Terrarium {
         }
     }
 
-    public void voegNieuweHerbivorenToe(int aantal) {
+    public void voegNieuweHerbivorenToe(int aantal, int levenskracht) {
         for (int i = 0; i < aantal; i++) {
-            plaatsOrganisme(new Herbivoor());
+            plaatsOrganisme(new Herbivoor(levenskracht));
         }
     }
 
@@ -125,7 +125,7 @@ public enum Terrarium {
     }
 
     public void voegBabyHerbivorenToe() {
-        voegNieuweHerbivorenToe(aantalBabyHerbivoren);
+        voegNieuweHerbivorenToe(aantalBabyHerbivoren,0);
         aantalBabyHerbivoren = 0;
     }
 

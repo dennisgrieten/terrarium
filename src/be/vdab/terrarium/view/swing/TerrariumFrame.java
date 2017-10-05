@@ -53,7 +53,7 @@ public class TerrariumFrame extends JFrame {
 		add(centerPanel, BorderLayout.CENTER);
 		add(southPanel, BorderLayout.SOUTH);
 
-		controller.initMatrix(10, 10);
+		controller.initMatrix(8, 8);
 		controller.initStartOrganismen(4,2,5,3);
 		linksPanel = new TerrariumPanel();
 		centerPanel.add(linksPanel);
