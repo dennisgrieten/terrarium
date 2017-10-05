@@ -53,7 +53,7 @@ public class Controller {
 		return getTerrarium().isValideAantalOrganismen(planten, herbivoren, carnivoren);
 	}
 
-	public boolean isValideAantalNieuwePlanten(int planten) {
-		return getTerrarium().isValideAantalNieuwePlanten(planten);
+	public boolean isValideAantalNieuwePlanten(int planten, int hoogte, int breedte) {
+		return getTerrarium().isValideAantalNieuwePlanten(planten, hoogte, breedte);
 	}
 }

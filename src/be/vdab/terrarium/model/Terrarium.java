@@ -194,7 +194,7 @@ public enum Terrarium {
         return true;
     }
 
-    public boolean isValideAantalNieuwePlanten(int planten) {
-        return planten > 0;
+    public boolean isValideAantalNieuwePlanten(int planten, int hoogte, int breedte) {
+        return planten > 0 && planten <= ((hoogte * breedte) * 0.05);
     }
 }
