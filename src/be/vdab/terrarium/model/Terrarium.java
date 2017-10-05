@@ -207,7 +207,6 @@ public enum Terrarium {
         return hoogte >= breedte && breedte >= 6;
     }
 
-    // TODO
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
         int minimum = 2;
         // totaal van organismen mag niet groter zijn dan 50% van het aantal cellen
