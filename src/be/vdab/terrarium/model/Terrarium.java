@@ -213,7 +213,7 @@ public enum Terrarium {
         if (planten >= minimum &&
                 herbivoren >= minimum &&
                 carnivoren >= minimum &&
-                (planten + herbivoren + carnivoren) > ((hoogte * breedte) / 2)) {
+                (planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2)) {
             return true;
         }
         return false;
