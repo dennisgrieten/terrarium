@@ -77,12 +77,12 @@ public class DierTest {
 		assertEquals(3, controller.getAantalHerbivoren());
 
 	}
-	
+
 	@Test
 	public void testBeweegNaarRechts() {
 		System.out.println("testBeweegNaarRechts");
 		controller.initMatrix();
-		
+
 		controller.plaatsOrganisme(new Plant(), 1, 0);
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, 0);
@@ -97,12 +97,12 @@ public class DierTest {
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
 	}
-	
+
 	@Test
 	public void testBeweegNaarLinks() {
 		System.out.println("testBeweegNaarLinks");
 		controller.initMatrix();
-		
+
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
 		controller.plaatsOrganisme(new Herbivoor(), 1, 1);
 		Herbivoor herbivoor = new Herbivoor();
@@ -117,12 +117,12 @@ public class DierTest {
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(0, herbivoor.getCel().getX());
 	}
-	
+
 	@Test
 	public void testBeweegNaarBoven() {
 		System.out.println("testBeweegNaarBoven");
 		controller.initMatrix();
-		
+
 		controller.plaatsOrganisme(new Herbivoor(), 1, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 1, 2);
 		controller.plaatsOrganisme(new Herbivoor(), 2, 1);
@@ -138,13 +138,12 @@ public class DierTest {
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
 	}
-	
-	
+
 	@Test
 	public void testBeweegNaarBeneden() {
 		System.out.println("testBeweegNaarBeneden");
 		controller.initMatrix();
-		
+
 		controller.plaatsOrganisme(new Herbivoor(), 0, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
 		Herbivoor herbivoor = new Herbivoor();
@@ -159,12 +158,12 @@ public class DierTest {
 		assertEquals(1, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
 	}
-	
+
 	@Test
 	public void testBeweegNiet() {
 		System.out.println("testBeweegNiet");
 		controller.initMatrix();
-		
+
 		controller.plaatsOrganisme(new Herbivoor(), 0, 0);
 		controller.plaatsOrganisme(new Herbivoor(), 0, 2);
 		controller.plaatsOrganisme(new Herbivoor(), 1, 1);
@@ -180,12 +179,12 @@ public class DierTest {
 		assertEquals(0, herbivoor.getCel().getY());
 		assertEquals(1, herbivoor.getCel().getX());
 	}
-	
+
 	@Test
 	public void testVechtRechtseZwakker() {
 		System.out.println("testVechtRechtseZwakker");
 		controller.initMatrix();
-		
+
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);
 		Carnivoor carnivoorZwak = new Carnivoor();
@@ -203,14 +202,14 @@ public class DierTest {
 		assertEquals(3, carnivoorSterk.getLevenskracht());
 
 		assertEquals(null, celZwak.getOrganisme());
-		
+
 	}
-	
+
 	@Test
 	public void testVechtLinkseZwakker() {
 		System.out.println("testVechtLinkseZwakker");
 		controller.initMatrix();
-		
+
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);
 		Carnivoor carnivoorZwak = new Carnivoor();
@@ -228,14 +227,14 @@ public class DierTest {
 		assertEquals(3, carnivoorSterk.getLevenskracht());
 
 		assertEquals(null, celZwak.getOrganisme());
-		
+
 	}
-	
+
 	@Test
 	public void testVechtOnbeslist() {
 		System.out.println("testVechtOnbeslist");
 		controller.initMatrix();
-		
+
 		Carnivoor carnivoorSterk = new Carnivoor();
 		carnivoorSterk.setLevenskracht(2);
 		Carnivoor carnivoorZwak = new Carnivoor();
@@ -254,5 +253,5 @@ public class DierTest {
 		assertEquals(2, carnivoorZwak.getLevenskracht());
 
 	}
-	
+
 }

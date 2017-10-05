@@ -36,9 +36,10 @@ public enum Terrarium {
 	public int getBreedte() {
 		return DIMENSIE;
 	}
+
 	public List<Cel> getLegeCellen() {
-	    return this.legeCellen;
-    }
+		return this.legeCellen;
+	}
 
 	public void initMatrix() {
 		legeCellen.clear();
@@ -160,5 +161,5 @@ public enum Terrarium {
 	public void verhoogBabyHerbivoren() {
 		aantalBabyHerbivoren++;
 	}
-	
+
 }

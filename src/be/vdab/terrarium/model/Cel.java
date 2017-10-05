@@ -48,7 +48,7 @@ public class Cel {
 			return false;
 		}
 	}
-	
+
 	public boolean isLeeg() {
 		return organisme == null;
 	}

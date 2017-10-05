@@ -89,7 +89,7 @@ public abstract class Organisme {
 	public Organisme getOnderBuur() {
 		return getBovenBuurCel().getOrganisme();
 	}
-	
+
 	public void addLevenskracht(int kracht) {
 		this.levenskracht += kracht;
 	}

@@ -54,7 +54,7 @@ public abstract class Dier extends Organisme {
 		if (dezeCel.getX() == Terrarium.INSTANCE.getBreedte() - 1) {
 			Terrarium.INSTANCE.plaatsOrganisme(dezeCel.getOrganisme()); // DIT IS DE MAGIC JUMP
 		}
-		
+
 		ArrayList<Cel> legeBuren = new ArrayList<>();
 		Cel rechterbuur = dezeCel.getOrganisme().getRechterBuurCel();
 		if ((rechterbuur != null) && (rechterbuur.isLeeg())) {
@@ -79,7 +79,7 @@ public abstract class Dier extends Organisme {
 			this.setHeeftGeageerd(true);
 		}
 	}
-	
+
 	protected void vecht() {
 		Organisme tegenstander = getRechterBuur();
 		if (this.getLevenskracht() > tegenstander.getLevenskracht()) {
