@@ -1,6 +1,8 @@
 package be.vdab.terrarium.view.swing;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,25 +45,28 @@ public class TerrariumFrame extends JFrame {
 
 	public TerrariumFrame() {
 		super("Terrarium");
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		
-		controller.initMatrix(8,8);
-		controller.initStartOrganismen();
+		setLayout(new BorderLayout());
+
+		JPanel centerPanel = new JPanel();
+		JPanel southPanel = new JPanel();
+		southPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+		add(centerPanel, BorderLayout.CENTER);
+		add(southPanel, BorderLayout.SOUTH);
+
+		controller.initMatrix(10, 10);
+		controller.initStartOrganismen(4,2,5,3);
 		linksPanel = new TerrariumPanel();
-		add(linksPanel);
+		centerPanel.add(linksPanel);
 		controller.dagActies();
 		rechtsPanel = new TerrariumPanel();
-		add(rechtsPanel);
-		
-		
+		centerPanel.add(rechtsPanel);
+
 		JButton volgendeButton = new JButton("volgende");
 		JButton sluitButton = new JButton("sluit");
-		add(volgendeButton);
-		add(sluitButton);
+		southPanel.add(volgendeButton);
+		southPanel.add(sluitButton);
 		volgendeButton.addActionListener(new VolgendeButtonListener());
-		volgendeButton.setPreferredSize(new Dimension(250,80));
 		sluitButton.addActionListener(new SluitButtonListener());
-		volgendeButton.setPreferredSize(new Dimension(250,80));
 		
 		pack();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

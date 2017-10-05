@@ -16,7 +16,7 @@ public class TerrariumPanel extends JPanel {
 	private int hoogte;
 	private int breedte;
 
-	private CelPanel[][] panels;
+	private CelLabel[][] panels;
 
 	public TerrariumPanel() {
 		setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -24,11 +24,11 @@ public class TerrariumPanel extends JPanel {
 		hoogte = terrarium.getHoogte();
 		breedte = terrarium.getBreedte();
 		Cel[][] matrix = terrarium.getMatrix();
-		panels = new CelPanel[hoogte][breedte];
+		panels = new CelLabel[hoogte][breedte];
 		setLayout(new GridLayout(hoogte, breedte));
 		for (int y = 0; y < hoogte; y++) {
 			for (int x = 0; x < breedte; x++) {
-				panels[y][x] = new CelPanel(matrix[y][x]);
+				panels[y][x] = new CelLabel(matrix[y][x]);
 				add(panels[y][x]);
 			}
 		}
@@ -38,7 +38,7 @@ public class TerrariumPanel extends JPanel {
 	public void update() {
 		for (int y = 0; y < hoogte; y++) {
 			for (int x = 0; x < breedte; x++) {
-				panels[y][x].update();
+				panels[y][x].werkBij();
 			}
 		}
 		repaint();
