@@ -41,15 +41,15 @@ public class Controller {
 		return Terrarium.INSTANCE.getAantalPlanten();
 	}
 
-	public boolean isValideHoogte() {
-		return getTerrarium().isValideHoogte();
+	public boolean isValideHoogte(int hoogte) {
+		return getTerrarium().isValideHoogte(hoogte);
 	}
 
-	public boolean isValideBreedte() {
-		return getTerrarium().isValideBreedte();
+	public boolean isValideBreedte(int lengte, int breedte) {
+		return getTerrarium().isValideBreedte(lengte, breedte);
 	}
 
-	public boolean isValideAantalOrganismen() {
-		return getTerrarium().isValideAantalOrganismen();
+	public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
+		return getTerrarium().isValideAantalOrganismen(planten, herbivoren, carnivoren);
 	}
 }

@@ -182,15 +182,15 @@ public enum Terrarium {
         aantalBabyHerbivoren++;
     }
 
-    public boolean isValideHoogte() {
+    public boolean isValideHoogte(int hoogte) {
+        return hoogte <= 25 && hoogte >= 6;
+    }
+
+    public boolean isValideBreedte(int hoogte, int breedte ) {
         return true;
     }
 
-    public boolean isValideBreedte() {
-        return true;
-    }
-
-    public boolean isValideAantalOrganismen() {
+    public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
         return true;
     }
 }
