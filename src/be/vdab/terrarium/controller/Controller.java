@@ -13,8 +13,8 @@ public class Controller {
 		Terrarium.INSTANCE.initMatrix(breedte, hoogte);
 	}
 
-	public void initStartOrganismen() {
-		Terrarium.INSTANCE.initStartOrganismen();
+	public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren) {
+		Terrarium.INSTANCE.initStartOrganismen(planten, plantenPerDag, herbivoren, carnivoren);
 	}
 
 	public void dagInit() {
@@ -41,4 +41,19 @@ public class Controller {
 		return Terrarium.INSTANCE.getAantalPlanten();
 	}
 
+	public boolean isValideHoogte(int hoogte) {
+		return getTerrarium().isValideHoogte(hoogte);
+	}
+
+	public boolean isValideBreedte(int lengte, int breedte) {
+		return getTerrarium().isValideBreedte(lengte, breedte);
+	}
+
+	public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
+		return getTerrarium().isValideAantalOrganismen(planten, herbivoren, carnivoren);
+	}
+
+	public boolean isValideAantalNieuwePlanten(int planten) {
+		return getTerrarium().isValideAantalNieuwePlanten(planten);
+	}
 }
