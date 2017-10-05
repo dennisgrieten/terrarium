@@ -187,7 +187,7 @@ public enum Terrarium {
     }
 
     public boolean isValideBreedte(int hoogte, int breedte ) {
-        return true;
+        return hoogte >= breedte && breedte >= 6;
     }
 
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
