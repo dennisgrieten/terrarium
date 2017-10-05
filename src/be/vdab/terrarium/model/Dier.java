@@ -56,7 +56,6 @@ public abstract class Dier extends Organisme {
 			}
 			if (legeBuren.size() > 0) {
 				Terrarium.INSTANCE.verplaatsOrganisme(this, legeBuren);
-				dezeCel.unSetOrganisme();
 				this.setHeeftGeageerd(true);
 			}
 		}

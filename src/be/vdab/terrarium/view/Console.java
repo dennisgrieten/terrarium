@@ -39,13 +39,14 @@ public class Console {
 	}
 
 	public static void main(String[] args) {
-		// args[0] = "6";
 		Controller controller = new Controller();
 
 		Scanner scanner = new Scanner(System.in);
 		String input = "";
 		int dagCounter = 1;
 
+		// init matrix met TIJDELIJKE startwaarden, pas aan voor flexibel console view
+		controller.initMatrix(8,8);
 		controller.initStartOrganismen();
 		do {
 			System.out.println("Begin dag " + dagCounter + "\n" + getStringRepresentation(controller.getTerrarium()));
