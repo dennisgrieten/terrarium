@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 import be.vdab.terrarium.model.Cel;
 import be.vdab.terrarium.model.Organisme;
@@ -13,28 +13,28 @@ import be.vdab.terrarium.model.Organisme;
 public class CelPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private static final ImageIcon nietsIcon = new ImageIcon("images/niets.png");
 	private static final ImageIcon plantIcon = new ImageIcon("images/plant.png");
 	private static final ImageIcon herbivoorIcon = new ImageIcon("images/herbivoor.png");
 	private static final ImageIcon carnivoorIcon = new ImageIcon("images/carnivoor.png");
-	
+
 	private final JLabel upLabel = new JLabel();
 	private final JLabel midLabel = new JLabel();
 	private final JLabel downLabel = new JLabel();
-	
+
 	private final Cel cel;
 
 	public CelPanel(Cel cel) {
 		this.cel = cel;
-		setBorder(new EmptyBorder(2, 2, 2, 2));
+		setBorder(LineBorder.createBlackLineBorder());
 		setLayout(new GridLayout(3, 1));
 		add(upLabel);
 		add(midLabel);
 		add(downLabel);
 		update();
 	}
-	
+
 	public void update() {
 		Organisme organisme = cel.getOrganisme();
 		if (organisme != null) {
@@ -52,12 +52,13 @@ public class CelPanel extends JPanel {
 			default:
 				break;
 			}
-			downLabel.setText("" + organisme.hashCode());
+			downLabel.setText("" + organisme.getId());
 		} else {
-			upLabel.setText("");
+			upLabel.setText("*****");
 			midLabel.setIcon(nietsIcon);
-			downLabel.setText("");
+			downLabel.setText("*****");
 		}
+		repaint();
 	}
-	
+
 }

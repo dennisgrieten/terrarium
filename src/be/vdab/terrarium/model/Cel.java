@@ -43,12 +43,15 @@ public class Cel {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
 		Cel cel = (Cel) o;
 
-		if (y != cel.y) return false;
+		if (y != cel.y)
+			return false;
 		return x == cel.x;
 	}
 

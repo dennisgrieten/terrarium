@@ -187,7 +187,7 @@ public class DierTest {
 
 		Herbivoor herbivoor = new Herbivoor();
 		controller.plaatsOrganisme(herbivoor, 0, controller.getTerrarium().getBreedte() - 1);
-		assertEquals(1, controller.getTerrarium().getAantalHerbivoren());   // check aantal herbivoren
+		assertEquals(1, controller.getTerrarium().getAantalHerbivoren()); // check aantal herbivoren
 
 		int oudeX = herbivoor.getCel().getX();
 		int oudeY = herbivoor.getCel().getY();
@@ -200,7 +200,7 @@ public class DierTest {
 		int nieuweY = herbivoor.getCel().getY();
 
 		assertTrue((oudeX != nieuweX) || (oudeY != nieuweY));
-        assertEquals(1, controller.getTerrarium().getAantalHerbivoren());   // check aantal herbivoren
+		assertEquals(1, controller.getTerrarium().getAantalHerbivoren()); // check aantal herbivoren
 	}
 
 	@Test

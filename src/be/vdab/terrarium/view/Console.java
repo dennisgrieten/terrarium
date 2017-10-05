@@ -39,7 +39,7 @@ public class Console {
 	}
 
 	public static void main(String[] args) {
-		args[0] = "6";
+		// args[0] = "6";
 		Controller controller = new Controller();
 
 		Scanner scanner = new Scanner(System.in);

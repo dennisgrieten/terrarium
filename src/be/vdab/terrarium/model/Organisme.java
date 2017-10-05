@@ -1,11 +1,20 @@
 package be.vdab.terrarium.model;
 
 public abstract class Organisme {
+
+	private static int count;
+
+	private int id;
 	private int levenskracht;
 	private Cel cel = null; // pointer naar de cel waar het organisme zich in bevindt
 
 	public Organisme() {
+		id = count++;
 		setLevenskracht(1);
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public abstract void ageer();
