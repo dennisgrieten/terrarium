@@ -24,14 +24,6 @@ public abstract class Dier extends Organisme {
 		this.setHeeftGeageerd(true);
 	}
 
-	// protected void eet(Organisme tegenstander) {
-	// Organisme slachtoffer = getRechterBuurCel().getOrganisme();
-	// super.setLevenskracht(super.getLevenskracht() +
-	// slachtoffer.getLevenskracht());
-	// slachtoffer.sterf();
-	// this.setHeeftGeageerd(true);
-	// }
-
 	public void beweeg() {
 		Cel dezeCel = super.getCel();
 		if (dezeCel.getX() == Terrarium.INSTANCE.getBreedte() - 1) {
