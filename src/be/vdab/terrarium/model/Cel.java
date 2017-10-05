@@ -23,7 +23,6 @@ public class Cel {
 	public void unSetOrganisme() {
 		Terrarium.INSTANCE.getLegeCellen().add(this);
 		this.organisme = null;
-		System.out.println(Terrarium.INSTANCE.getLegeCellen().contains(this));
 	}
 
 	public Organisme getOrganisme() {
