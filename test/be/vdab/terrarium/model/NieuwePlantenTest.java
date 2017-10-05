@@ -13,8 +13,8 @@ public class NieuwePlantenTest {
     @Before
     public void before() {
         Controller controller = new Controller();
-        controller.initMatrix(6, 6);
-        controller.initStartOrganismen();
+        controller.initMatrix(10, 10);
+        controller.initStartOrganismen(4,2,5,3);
         System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
     }
 
