@@ -65,6 +65,7 @@ public class ConfigPanel extends JPanel {
 				aantalPlantenBijStart = Integer.parseInt(aantalPlantenBijStartField.getText());
 				aantalHerbivorenBijStart = Integer.parseInt(aantalHerbivorenBijStartField.getText());
 				aantalCarnivorenBijStart = Integer.parseInt(aantalCarnivorenBijStartField.getText());
+				aantalOmnivorenBijStart = Integer.parseInt(aantalOmnivorenBijStartField.getText());
 
 				String errorMessage = "";
 				if (!controller.isValideHoogte(hoogte)) {
