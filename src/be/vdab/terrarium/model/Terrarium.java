@@ -209,7 +209,7 @@ public enum Terrarium {
 
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
         int minimum = 2;
-        
+
         if (planten < minimum) {
             throw new IllegalArgumentException("foutieve aantal planten");
         } if (herbivoren < minimum) {
@@ -217,7 +217,7 @@ public enum Terrarium {
         } if (carnivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal carnivoren");
         } if ((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2)) {
-            throw new IllegalArgumentException("foutieve aantal carnivoren");
+            throw new IllegalArgumentException("Aantal organismen > 50% van het terrarium");
         }
 
         return true;
