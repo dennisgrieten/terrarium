@@ -276,14 +276,37 @@ public class DierTest {
 	}
 
 	@Test
+	public void testVechtRechtseOmnivoorZwakker() {
+		System.out.println("testVechtRechtseZwakker");
+		controller.initMatrix(6,6);
+
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Omnivoor omnivoorZwak = new Omnivoor(1);
+
+
+		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
+		controller.plaatsOrganisme(omnivoorZwak, 0, 1);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		Cel celZwak = omnivoorZwak.getCel();
+		carnivoorSterk.vecht();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(3, carnivoorSterk.getLevenskracht());
+
+		assertEquals(null, celZwak.getOrganisme());
+
+	}
+
+	@Test
 	public void testVechtLinkseZwakker() {
 		System.out.println("testVechtLinkseZwakker");
         controller.initMatrix(6,6);
 
-		Carnivoor carnivoorSterk = new Carnivoor();
-		carnivoorSterk.setLevenskracht(2);
-		Carnivoor carnivoorZwak = new Carnivoor();
-		carnivoorZwak.setLevenskracht(1);
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Carnivoor carnivoorZwak = new Carnivoor(1);
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 0);
 
@@ -291,6 +314,29 @@ public class DierTest {
 
 		Cel celZwak = carnivoorZwak.getCel();
 		carnivoorZwak.vecht();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(3, carnivoorSterk.getLevenskracht());
+
+		assertEquals(null, celZwak.getOrganisme());
+
+	}
+
+	@Test
+	public void testVechtLinkseOmivoorZwakker() {
+		System.out.println("testVechtLinkseZwakker");
+		controller.initMatrix(6,6);
+
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Omnivoor omnivoorZwak = new Omnivoor(1);
+		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
+		controller.plaatsOrganisme(omnivoorZwak, 0, 0);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		Cel celZwak = omnivoorZwak.getCel();
+		omnivoorZwak.vecht();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
@@ -321,6 +367,28 @@ public class DierTest {
 
 		assertEquals(2, carnivoorSterk.getLevenskracht());
 		assertEquals(2, carnivoorZwak.getLevenskracht());
+
+	}
+
+	@Test
+	public void testVechtOnbeslistMetOmnivoor() {
+		System.out.println("testVechtOnbeslist");
+		controller.initMatrix(6,6);
+
+		Carnivoor carnivoorSterk = new Carnivoor(2);
+		Omnivoor omnivoorSterk = new Omnivoor(2);
+		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
+		controller.plaatsOrganisme(omnivoorSterk, 0, 0);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		Cel celZwak = omnivoorSterk.getCel();
+		omnivoorSterk.vecht();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(2, carnivoorSterk.getLevenskracht());
+		assertEquals(2, omnivoorSterk.getLevenskracht());
 
 	}
 
