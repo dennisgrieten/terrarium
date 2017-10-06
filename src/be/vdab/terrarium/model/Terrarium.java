@@ -157,9 +157,9 @@ public enum Terrarium {
         dagActies("Herbivoor");
         dagActies("Carnivoor");
         dagActies("Omnivoor");
+        resetDieren();    // zet "heeftGeageerd" op false voor alle dieren;
         plaatsOrganisme(geborenOrganismen); // zet pasgeboren organismen in het terrarium
         geborenOrganismen.clear();
-        resetDieren();    // zet "heeftGeageerd" op false voor alle dieren;
     }
 
     private void resetDieren() {

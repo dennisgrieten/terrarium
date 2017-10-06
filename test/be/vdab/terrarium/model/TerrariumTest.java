@@ -25,12 +25,17 @@ public class TerrariumTest {
 
 	@Test
 	public void getAantalHerbivoren() throws Exception {
-		assertEquals(5, controller.getTerrarium().getAantalHerbivoren());
+		assertEquals(2, controller.getTerrarium().getAantalHerbivoren());
 	}
 
 	@Test
 	public void getAantalCarnivoren() {
-		assertEquals(3, controller.getTerrarium().getAantalCarnivoren());
+		assertEquals(2, controller.getTerrarium().getAantalCarnivoren());
+	}
+
+	@Test
+	public void getAantalOmnivoren() {
+		assertEquals(2, controller.getTerrarium().getAantalOmnivoren());
 	}
 
 	@Test
