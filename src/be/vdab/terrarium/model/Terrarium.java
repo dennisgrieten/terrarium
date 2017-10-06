@@ -209,24 +209,18 @@ public enum Terrarium {
 
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
         int minimum = 2;
-        // totaal van organismen mag niet groter zijn dan 50% van het aantal cellen
-        if (planten >= minimum &&
-                herbivoren >= minimum &&
-                carnivoren >= minimum &&
-                (planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2)) {
-            return true;
-        }
+
         if (planten < minimum) {
             throw new IllegalArgumentException("foutieve aantal planten");
-        }
-        if (herbivoren < minimum) {
+        } if (herbivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal herbivoren");
-        }
-        if (carnivoren < minimum) {
+        } if (carnivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal carnivoren");
+        } if (!((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2))) {
+            throw new IllegalArgumentException("Aantal organismen > 50% van het terrarium");
         }
 
-        return false;
+        return true;
     }
 
     public boolean isValideAantalNieuwePlanten(int planten) {
