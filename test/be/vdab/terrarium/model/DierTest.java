@@ -91,7 +91,7 @@ public class DierTest {
 		assertEquals(2, controller.getAantalHerbivoren());
 
 		herbivoor.ageer();
-		Terrarium.INSTANCE.voegBabyHerbivorenToe();
+		Terrarium.INSTANCE.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
