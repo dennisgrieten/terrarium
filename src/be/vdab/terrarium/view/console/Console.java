@@ -1,6 +1,5 @@
 package be.vdab.terrarium.view.console;
 
-import java.lang.reflect.GenericSignatureFormatError;
 import java.util.Scanner;
 
 import be.vdab.terrarium.controller.Controller;
@@ -18,17 +17,17 @@ public class Console {
 				Organisme organisme = matrix[y][x].getOrganisme();
 				if (organisme != null) {
 					switch (organisme.getClass().getSimpleName()) {
-					case "Plant":
-						output.append("P  ");
-						break;
-					case "Herbivoor":
-						output.append("H  ");
-						break;
-					case "Carnivoor":
-						output.append("C  ");
-						break;
-					default:
-						break;
+						case "Plant":
+							output.append("P  ");
+							break;
+						case "Herbivoor":
+							output.append("H  ");
+							break;
+						case "Carnivoor":
+							output.append("C  ");
+							break;
+						default:
+							break;
 					}
 				} else {
 					output.append(".  ");
@@ -57,24 +56,27 @@ public class Console {
 		int aantalPlantenPerDag = 0;
 		int aantalHerbivoren = 0;
 		int aantalCarnivoren = 0;
-		String errorMelding = null;
+		boolean isValidAantalOrganismen = false;
+		boolean isValidAantalNiewePlanten = false;
 
-		System.out.println();
-		
 		do {
-			if (errorMelding != null) {
-				System.out.println("ERROR: " + errorMelding);
-			}
+			System.out.println();
 			System.out.println("INGAVE FLEXIBELE GEGEVENS ORGANISMEN: ");
-			aantalPlanten = geefAantalPlanten(scanner);
 			aantalPlantenPerDag = geefAantalPlantenPerDag(scanner);
+			aantalPlanten = geefAantalPlanten(scanner);
 			aantalHerbivoren = geefAantalHerbivoren(scanner);
 			aantalCarnivoren = geefAantalCarnivoren(scanner);
-			errorMelding = "Ingegeven data is foutief. Gelieve de data opnieuw in te geven. ";
-//			System.out.println("isValideAantalOrganismen= " + controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren));
-//			System.out.println("isValideAantalNieuwePlanten= " + controller.isValideAantalNieuwePlanten(aantalPlanten));
-		} while ((!controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren)
-				|| (!controller.isValideAantalNieuwePlanten(aantalPlanten))));
+			isValidAantalNiewePlanten = controller.isValideAantalNieuwePlanten(aantalPlantenPerDag);
+			if (!isValidAantalNiewePlanten) {
+				System.out.println("ERROR: " + "Foutief aantal nieuwe planten per dag !!!!!!!");
+			}
+			try {
+				isValidAantalOrganismen = controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren,
+						aantalCarnivoren);
+			} catch (IllegalArgumentException ex) {
+				System.out.println("ERROR: " + ex.getMessage() + "!!!!!!!");
+			}
+		} while ((!isValidAantalOrganismen) || (!isValidAantalNiewePlanten));
 
 		System.out.println();
 		System.out.println("hoogte= " + hoogte);
@@ -83,9 +85,7 @@ public class Console {
 		System.out.println("aantalHerbivoren= " + aantalHerbivoren);
 		System.out.println("aantalCarnivoren= " + aantalCarnivoren);
 		System.out.println();
-		
-		// init matrix met TIJDELIJKE startwaarden, pas aan voor flexibel console view
-		// controller.initMatrix(8, 8);
+
 		controller.initStartOrganismen(aantalPlanten, aantalPlantenPerDag, aantalHerbivoren, aantalCarnivoren);
 
 		do {
@@ -114,7 +114,7 @@ public class Console {
 	}
 
 	private static int geefBreedte(Scanner scanner, Controller controller, int hoogte) {
-		String message = "     Geef de breedte van het raster (moet <= hoogte zijn): ";
+		String message = "     Geef de breedte van het raster (tussen 6 en 25 en <= hoogte): ";
 		System.out.print(message);
 		int breedte = getNumericValue(scanner, message);
 		while (!controller.isValideBreedte(hoogte, breedte)) {
@@ -125,28 +125,28 @@ public class Console {
 	}
 
 	private static int geefAantalPlanten(Scanner scanner) {
-		String message = "     Geef aantal planten: ";
+		String message = "     Geef initieel aantal planten: ";
 		System.out.print(message);
 		int aantalPlanten = getNumericValue(scanner, message);
 		return aantalPlanten;
 	}
 
 	private static int geefAantalPlantenPerDag(Scanner scanner) {
-		String message = "     Geef aantal planten per dag: ";
+		String message = "     Geef aantal toe te voegen planten per dag: ";
 		System.out.print(message);
 		int aantalPlantenPerDag = getNumericValue(scanner, message);
 		return aantalPlantenPerDag;
 	}
 
 	private static int geefAantalHerbivoren(Scanner scanner) {
-		String message = "     Geef aantal herbivoren: ";
+		String message = "     Geef initieel aantal herbivoren: ";
 		System.out.print(message);
 		int aantalHerbivoren = getNumericValue(scanner, message);
 		return aantalHerbivoren;
 	}
 
 	private static int geefAantalCarnivoren(Scanner scanner) {
-		String message = "     Geef aantal carnivoren: ";
+		String message = "     Geef initieel aantal carnivoren: ";
 		System.out.print(message);
 		int aantalCarnivoren = getNumericValue(scanner, message);
 		return aantalCarnivoren;
@@ -159,7 +159,6 @@ public class Console {
 				num = Integer.parseInt(scanner.nextLine());
 				break;
 			} catch (NumberFormatException nfe) {
-				System.out.println("Foutieve input.");
 				System.out.print(message);
 			}
 		}
