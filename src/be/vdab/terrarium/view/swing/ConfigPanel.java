@@ -24,14 +24,22 @@ public class ConfigPanel extends JPanel {
 	public ConfigPanel() {
 		Controller controller = new Controller();
 
-		JTextField hoogteField = new JTextField(5);
-		JTextField breedteField = new JTextField(5);
+		JTextField hoogteField = new JTextField(5);				
+		JTextField breedteField = new JTextField(5);			
 		JTextField aantalNieuwePlantenPerDagField = new JTextField(5);
 		JTextField aantalPlantenBijStartField = new JTextField(5);
 		JTextField aantalHerbivorenBijStartField = new JTextField(5);
 		JTextField aantalCarnivorenBijStartField = new JTextField(5);
 		JTextField aantalOmnivorenBijStartField = new JTextField(5);
 
+		hoogteField.setText("6");
+		breedteField.setText("6");
+		aantalPlantenBijStartField.setText("4");
+		aantalNieuwePlantenPerDagField.setText("1");
+		aantalHerbivorenBijStartField.setText("5");
+		aantalCarnivorenBijStartField.setText("4");
+		aantalOmnivorenBijStartField.setText("3");
+		
 		setLayout(new GridLayout(7, 2));
 		add(new JLabel("hoogte:"));
 		add(hoogteField);
