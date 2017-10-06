@@ -14,7 +14,7 @@ public class NieuwePlantenTest {
     public void before() {
         Controller controller = new Controller();
         controller.initMatrix(10, 10);
-        controller.initStartOrganismen(4,2,5,3);
+        controller.initStartOrganismen(4,2,2,2, 2);
         System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
     }
 
