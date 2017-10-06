@@ -61,7 +61,7 @@ public enum Terrarium {
             aantalNieuwePlantenPerDag = plantenPerDag;
         }
 
-        if (isValideAantalOrganismen(planten, herbivoren, carnivoren)) {
+        if (isValideAantalOrganismen(planten, herbivoren, carnivoren, omnivoren)) {
             voegNieuwePlantenToe(planten);
             voegNieuweHerbivorenToe(herbivoren);
             voegNieuweCarnivorenToe(carnivoren);
@@ -203,6 +203,11 @@ public enum Terrarium {
         return getAantalOrganismen("Carnivoor");
     }
 
+    // voor test
+    public int getAantalOmnivoren() {
+        return getAantalOrganismen("Omnivoor");
+    }
+
     public boolean isValideHoogte(int hoogte) {
         return hoogte <= 25 && hoogte >= 6;
     }
@@ -211,7 +216,7 @@ public enum Terrarium {
         return isValideHoogte(hoogte) && hoogte >= breedte && breedte >= 6;
     }
 
-    public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
+    public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren, int omnivoren) {
         int minimum = 2;
 
         if (planten < minimum) {
@@ -223,7 +228,10 @@ public enum Terrarium {
         if (carnivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal carnivoren");
         }
-        if (!((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2))) {
+        if (omnivoren < minimum) {
+            throw new IllegalArgumentException("foutieve aantal omnivoren");
+        }
+        if (!((planten + herbivoren + carnivoren + omnivoren) < ((hoogte * breedte) / 2))) {
             throw new IllegalArgumentException("Aantal organismen > 50% van het terrarium");
         }
 

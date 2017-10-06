@@ -55,7 +55,7 @@ public class TerrariumFrame extends JFrame {
 		add(southPanel, BorderLayout.SOUTH);
 
 		controller.initMatrix(8, 8);
-		controller.initStartOrganismen(4, 2, 5, 3);
+		controller.initStartOrganismen(4, 2, 2, 2, 2);
 		linksPanel = new TerrariumPanel();
 		centerPanel.add(linksPanel);
 		controller.dagActies();
