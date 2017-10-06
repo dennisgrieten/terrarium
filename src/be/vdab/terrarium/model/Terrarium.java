@@ -220,7 +220,6 @@ public enum Terrarium {
     }
 
     public boolean isValideAantalNieuwePlanten(int planten) {
-        System.out.println(planten);
         return planten > 0 && planten <= (int) Math.floor((hoogte * breedte) * 0.05);
     }
 }
