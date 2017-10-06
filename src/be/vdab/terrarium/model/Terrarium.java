@@ -216,7 +216,7 @@ public enum Terrarium {
             throw new IllegalArgumentException("foutieve aantal herbivoren");
         } if (carnivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal carnivoren");
-        } if ((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2)) {
+        } if (!((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2))) {
             throw new IllegalArgumentException("Aantal organismen > 50% van het terrarium");
         }
 
