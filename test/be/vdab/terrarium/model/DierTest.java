@@ -55,6 +55,7 @@ public class DierTest {
 
 	}
 
+	@Test
 	public void testOmnivoorEetHerbivoor() {
 		System.out.println("testCarnivoorEetHerbivoor");
 		controller.initMatrix(6,6);
@@ -256,6 +257,8 @@ public class DierTest {
 		carnivoorSterk.setLevenskracht(2);
 		Carnivoor carnivoorZwak = new Carnivoor();
 		carnivoorZwak.setLevenskracht(1);
+
+		Cor
 		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 
