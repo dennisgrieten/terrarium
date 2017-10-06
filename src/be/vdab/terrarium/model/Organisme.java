@@ -10,6 +10,10 @@ public abstract class Organisme {
     private int levenskracht;
     private Cel cel = null; // pointer naar de cel waar het organisme zich in bevindt
 
+    public Organisme() {
+        this(1);
+    }
+
     public Organisme(int levenskracht) {
         id = count++;
         setLevenskracht(levenskracht);

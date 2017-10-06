@@ -13,8 +13,8 @@ public class Controller {
 		Terrarium.INSTANCE.initMatrix(breedte, hoogte);
 	}
 
-	public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren) {
-		Terrarium.INSTANCE.initStartOrganismen(planten, plantenPerDag, herbivoren, carnivoren);
+	public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren, int omnivoren) {
+		Terrarium.INSTANCE.initStartOrganismen(planten, plantenPerDag, herbivoren, carnivoren, omnivoren);
 	}
 
 	public void dagInit() {
