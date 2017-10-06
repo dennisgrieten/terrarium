@@ -13,6 +13,7 @@ public class TerrariumTest {
 	@Before
 	public void before() {
 		controller = new Controller();
+		// testen kunnen falen als parameters wijzigen
 		controller.initMatrix(6,6);
 		controller.initStartOrganismen(4,1,5,3);
 	}
