@@ -45,8 +45,8 @@ public class Controller {
 		return getTerrarium().isValideHoogte(hoogte);
 	}
 
-	public boolean isValideBreedte(int lengte, int breedte) {
-		return getTerrarium().isValideBreedte(lengte, breedte);
+	public boolean isValideBreedte(int hoogte, int breedte) {
+		return getTerrarium().isValideBreedte(hoogte, breedte);
 	}
 
 	public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
