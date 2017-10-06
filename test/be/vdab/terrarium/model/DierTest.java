@@ -56,6 +56,28 @@ public class DierTest {
 	}
 
 	@Test
+	public void testOmnivoorEetHerbivoor() {
+		System.out.println("testCarnivoorEetHerbivoor");
+		controller.initMatrix(6,6);
+		Carnivoor carnivoor = new Carnivoor();
+
+		controller.plaatsOrganisme(carnivoor, 0, 0);
+		controller.plaatsOrganisme(new Herbivoor(), 0, 1);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+		assertEquals(1, controller.getAantalCarnivoren());
+		assertEquals(1, controller.getAantalHerbivoren());
+
+		carnivoor.ageer();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(1, controller.getAantalCarnivoren());
+		assertEquals(0, controller.getAantalHerbivoren());
+
+	}
+
+	@Test
 	public void testHerbivorenVrijen() {
 		System.out.println("testHerbivorenVrijen");
         controller.initMatrix(6,6);
@@ -70,11 +92,34 @@ public class DierTest {
 		assertEquals(2, controller.getAantalHerbivoren());
 
 		herbivoor.ageer();
-		Terrarium.INSTANCE.voegBabyHerbivorenToe();
+		Terrarium.INSTANCE.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		assertEquals(3, controller.getAantalHerbivoren());
+
+	}
+
+	@Test
+	public void testOmnivoorVrijen() {
+		System.out.println("testHerbivorenVrijen");
+		controller.initMatrix(6,6);
+
+		Omnivoor omnivoor = new Omnivoor();
+
+		controller.plaatsOrganisme(omnivoor, 4, 2);
+		controller.plaatsOrganisme(new Omnivoor(), 4, 3);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(2, controller.getAantalOmnivoren());
+
+		omnivoor.ageer();
+		Terrarium.INSTANCE.dagActies();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(3, controller.getAantalOmnivoren());
 
 	}
 
@@ -212,6 +257,8 @@ public class DierTest {
 		carnivoorSterk.setLevenskracht(2);
 		Carnivoor carnivoorZwak = new Carnivoor();
 		carnivoorZwak.setLevenskracht(1);
+
+		Cor
 		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 

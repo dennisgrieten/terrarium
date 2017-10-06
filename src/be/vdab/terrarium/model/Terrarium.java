@@ -8,16 +8,17 @@ public enum Terrarium {
     INSTANCE;
 
     private final Random random = new Random();
-    private static Cel[][] matrix;
-    public static int aantalNieuwePlantenPerDag;
-    private static int aantalBabyHerbivoren;
-    private static int breedte;
-    private static int hoogte;
+    private Cel[][] matrix;
+    private int aantalNieuwePlantenPerDag;
+    private List<Organisme> geborenOrganismen;
+    private int breedte;
+    private int hoogte;
     private List<Cel> legeCellen;
 
 
     private Terrarium() {
         this.legeCellen = new ArrayList<Cel>();
+        this.geborenOrganismen = new ArrayList<Organisme>();
     }
 
     public Cel[][] getMatrix() {
@@ -36,9 +37,13 @@ public enum Terrarium {
         return this.legeCellen;
     }
 
+    public List<Organisme> getGeborenOrganismen() {
+        return this.geborenOrganismen;
+    }
+
     public void initMatrix(int breedte, int hoogte) {
-        Terrarium.breedte = breedte;
-        Terrarium.hoogte = hoogte;
+        this.breedte = breedte;
+        this.hoogte = hoogte;
         legeCellen.clear();
         matrix = new Cel[hoogte][breedte];
         // initialiseer cellen in de matrix met coördinaten
@@ -51,21 +56,21 @@ public enum Terrarium {
     }
 
     // aparte init voor startorganismen om zo een leeg veld te krijgen
-    public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren) {
+    public void initStartOrganismen(int planten, int plantenPerDag, int herbivoren, int carnivoren, int omnivoren) {
         if (isValideAantalNieuwePlanten(plantenPerDag)) {
             aantalNieuwePlantenPerDag = plantenPerDag;
         }
 
-        if (isValideAantalOrganismen(planten, herbivoren, carnivoren)) {
+        if (isValideAantalOrganismen(planten, herbivoren, carnivoren, omnivoren)) {
             voegNieuwePlantenToe(planten);
             voegNieuweHerbivorenToe(herbivoren);
             voegNieuweCarnivorenToe(carnivoren);
+            voegNieuweOmnivorenToe(omnivoren);
         }
     }
 
     // plaats organismen uit een array op random plaatsen in de matrix
-    // wordt niet meer gebruikt na flexibel terrarium
-    public void plaatsOrganisme(Organisme[] organismen) {
+    public void plaatsOrganisme(List<Organisme> organismen) {
         for (Organisme organisme : organismen) {
             if (!legeCellen.isEmpty()) {
                 int n = random.nextInt(legeCellen.size());
@@ -124,9 +129,10 @@ public enum Terrarium {
         }
     }
 
-    public void voegBabyHerbivorenToe() {
-        voegNieuweHerbivorenToe(aantalBabyHerbivoren);
-        aantalBabyHerbivoren = 0;
+    public void voegNieuweOmnivorenToe(int aantal) {
+        for (int i = 0; i < aantal; i++) {
+            plaatsOrganisme(new Omnivoor());
+        }
     }
 
     private void dagActies(String simpleClassName) {
@@ -150,7 +156,9 @@ public enum Terrarium {
     public void dagActies() {
         dagActies("Herbivoor");
         dagActies("Carnivoor");
-        voegBabyHerbivorenToe();
+        dagActies("Omnivoor");
+        plaatsOrganisme(geborenOrganismen); // zet pasgeboren organismen in het terrarium
+        geborenOrganismen.clear();
         resetDieren();    // zet "heeftGeageerd" op false voor alle dieren;
     }
 
@@ -195,8 +203,9 @@ public enum Terrarium {
         return getAantalOrganismen("Carnivoor");
     }
 
-    public void verhoogBabyHerbivoren() {
-        aantalBabyHerbivoren++;
+    // voor test
+    public int getAantalOmnivoren() {
+        return getAantalOrganismen("Omnivoor");
     }
 
     public boolean isValideHoogte(int hoogte) {
@@ -207,16 +216,22 @@ public enum Terrarium {
         return isValideHoogte(hoogte) && hoogte >= breedte && breedte >= 6;
     }
 
-    public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
+    public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren, int omnivoren) {
         int minimum = 2;
 
         if (planten < minimum) {
             throw new IllegalArgumentException("foutieve aantal planten");
-        } if (herbivoren < minimum) {
+        }
+        if (herbivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal herbivoren");
-        } if (carnivoren < minimum) {
+        }
+        if (carnivoren < minimum) {
             throw new IllegalArgumentException("foutieve aantal carnivoren");
-        } if (!((planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2))) {
+        }
+        if (omnivoren < minimum) {
+            throw new IllegalArgumentException("foutieve aantal omnivoren");
+        }
+        if (planten + herbivoren + carnivoren + omnivoren > (hoogte * breedte) / 2) {
             throw new IllegalArgumentException("Aantal organismen > 50% van het terrarium");
         }
 
