@@ -66,15 +66,15 @@ public class Console {
 				System.out.println("ERROR: " + errorMelding);
 			}
 			System.out.println("INGAVE FLEXIBELE GEGEVENS ORGANISMEN: ");
-			aantalPlanten = geefAantalPlanten(scanner);
 			aantalPlantenPerDag = geefAantalPlantenPerDag(scanner);
+			aantalPlanten = geefAantalPlanten(scanner);
 			aantalHerbivoren = geefAantalHerbivoren(scanner);
 			aantalCarnivoren = geefAantalCarnivoren(scanner);
 			errorMelding = "Ingegeven data is foutief. Gelieve de data opnieuw in te geven. ";
-//			System.out.println("isValideAantalOrganismen= " + controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren));
-//			System.out.println("isValideAantalNieuwePlanten= " + controller.isValideAantalNieuwePlanten(aantalPlanten));
+			System.out.println("isValideAantalOrganismen= " + controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren));
+			System.out.println("isValideAantalNieuwePlanten= " + controller.isValideAantalNieuwePlanten(aantalPlanten));
 		} while ((!controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren, aantalCarnivoren)
-				|| (!controller.isValideAantalNieuwePlanten(aantalPlanten))));
+				|| (!controller.isValideAantalNieuwePlanten(aantalPlantenPerDag))));
 
 		System.out.println();
 		System.out.println("hoogte= " + hoogte);
