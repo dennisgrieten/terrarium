@@ -14,12 +14,7 @@ public class CelLabel extends JLabel {
 
 	public CelLabel(Cel cel) {
 		this.cel = cel;
-
-		// setVerticalTextPosition(JLabel.TOP);
-		// setHorizontalTextPosition(JLabel.LEFT);
 		setBorder(LineBorder.createBlackLineBorder());
-		// setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		// werkBij();
 	}
 
 	public void werkBij() {
