@@ -26,6 +26,9 @@ public class Console {
 						case "Carnivoor":
 							output.append("C  ");
 							break;
+						case "Omnivoor":
+							output.append("O  ");
+							break;
 						default:
 							break;
 					}
@@ -56,6 +59,7 @@ public class Console {
 		int aantalPlantenPerDag = 0;
 		int aantalHerbivoren = 0;
 		int aantalCarnivoren = 0;
+		int aantalOmnivoren = 0;
 		boolean isValidAantalOrganismen = false;
 		boolean isValidAantalNiewePlanten = false;
 
@@ -66,13 +70,14 @@ public class Console {
 			aantalPlanten = geefAantalPlanten(scanner);
 			aantalHerbivoren = geefAantalHerbivoren(scanner);
 			aantalCarnivoren = geefAantalCarnivoren(scanner);
+			aantalOmnivoren = geefAantalOmnivoren(scanner);
 			isValidAantalNiewePlanten = controller.isValideAantalNieuwePlanten(aantalPlantenPerDag);
 			if (!isValidAantalNiewePlanten) {
 				System.out.println("ERROR: " + "Foutief aantal nieuwe planten per dag !!!!!!!");
 			}
 			try {
 				isValidAantalOrganismen = controller.isValideAantalOrganismen(aantalPlanten, aantalHerbivoren,
-						aantalCarnivoren);
+						aantalCarnivoren, aantalOmnivoren);
 			} catch (IllegalArgumentException ex) {
 				System.out.println("ERROR: " + ex.getMessage() + "!!!!!!!");
 			}
@@ -84,9 +89,10 @@ public class Console {
 		System.out.println("aantalPlanten= " + aantalPlanten);
 		System.out.println("aantalHerbivoren= " + aantalHerbivoren);
 		System.out.println("aantalCarnivoren= " + aantalCarnivoren);
+		System.out.println("aantalOmnivoren= " + aantalOmnivoren);
 		System.out.println();
 
-		controller.initStartOrganismen(aantalPlanten, aantalPlantenPerDag, aantalHerbivoren, aantalCarnivoren);
+		controller.initStartOrganismen(aantalPlanten, aantalPlantenPerDag, aantalHerbivoren, aantalCarnivoren, aantalOmnivoren);
 
 		do {
 			System.out.println("Begin dag " + dagCounter + "\n" + getStringRepresentation(controller.getTerrarium()));
@@ -150,6 +156,13 @@ public class Console {
 		System.out.print(message);
 		int aantalCarnivoren = getNumericValue(scanner, message);
 		return aantalCarnivoren;
+	}
+
+	private static int geefAantalOmnivoren(Scanner scanner) {
+		String message = "     Geef initieel aantal omnivoren: ";
+		System.out.print(message);
+		int aantalOmnivoren = getNumericValue(scanner, message);
+		return aantalOmnivoren;
 	}
 
 	private static int getNumericValue(Scanner scanner, String message) {
