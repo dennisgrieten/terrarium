@@ -11,6 +11,7 @@ public class Carnivoor extends Dier {
                     super.eet();
                     break;
                 case "Carnivoor":
+                case "Omnivoor":
                     vecht();
                     break;
             }
