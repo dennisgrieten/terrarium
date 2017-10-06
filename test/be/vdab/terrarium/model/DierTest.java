@@ -265,7 +265,7 @@ public class DierTest {
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
-		carnivoorSterk.vecht();
+		controller.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
@@ -361,7 +361,7 @@ public class DierTest {
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
-		carnivoorZwak.vecht();
+		controller.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
@@ -379,11 +379,12 @@ public class DierTest {
 		Omnivoor omnivoorSterk = new Omnivoor(2);
 		controller.plaatsOrganisme(carnivoorSterk, 0, 1);
 		controller.plaatsOrganisme(omnivoorSterk, 0, 0);
-
+		controller.plaatsOrganisme(new Plant(), 0,2);
+		controller.plaatsOrganisme(new Plant(), 1,1);
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = omnivoorSterk.getCel();
-		omnivoorSterk.vecht();
+		controller.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
