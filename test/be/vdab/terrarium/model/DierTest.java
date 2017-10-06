@@ -258,7 +258,7 @@ public class DierTest {
 		Carnivoor carnivoorZwak = new Carnivoor();
 		carnivoorZwak.setLevenskracht(1);
 
-		Cor
+
 		controller.plaatsOrganisme(carnivoorSterk, 0, 0);
 		controller.plaatsOrganisme(carnivoorZwak, 0, 1);
 
