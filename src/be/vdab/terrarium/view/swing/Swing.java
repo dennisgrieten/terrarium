@@ -12,12 +12,14 @@ public class Swing {
 		int aantalPlantenBijStart = configPanel.getAantalPlantenBijStart();
 		int aantalHerbivorenBijStart = configPanel.getAantalHerbivorenBijStart();
 		int aantalCarnivorenBijStart = configPanel.getAantalCarnivorenBijStart();
+		int aantalOmnivorenBijStart = configPanel.getAantalOmnivorenBijStart();
 		
 		
 		
 		Controller controller = new Controller();
 		controller.initMatrix(breedte, hoogte);
-		controller.initStartOrganismen(aantalPlantenBijStart,aantalNieuwePlantenPerDag, aantalHerbivorenBijStart, aantalCarnivorenBijStart);
+		controller.initStartOrganismen(aantalPlantenBijStart,aantalNieuwePlantenPerDag, 
+				aantalHerbivorenBijStart, aantalCarnivorenBijStart,aantalOmnivorenBijStart);
 		
 		
 		new TerrariumFrame();
