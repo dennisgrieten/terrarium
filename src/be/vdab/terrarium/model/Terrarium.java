@@ -204,7 +204,7 @@ public enum Terrarium {
     }
 
     public boolean isValideBreedte(int hoogte, int breedte) {
-        return hoogte >= breedte && breedte >= 6;
+        return isValideHoogte(hoogte) && hoogte >= breedte && breedte >= 6;
     }
 
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
@@ -220,6 +220,7 @@ public enum Terrarium {
     }
 
     public boolean isValideAantalNieuwePlanten(int planten) {
-        return planten > 0 && planten <= ((hoogte * breedte) * 0.05);
+        System.out.println(planten);
+        return planten > 0 && planten <= (int) Math.floor((hoogte * breedte) * 0.05);
     }
 }
