@@ -32,10 +32,10 @@ public class TerrariumPanel extends JPanel {
 				add(panels[y][x]);
 			}
 		}
-		update();
+		werkBij();
 	}
 
-	public void update() {
+	public void werkBij() {
 		for (int y = 0; y < hoogte; y++) {
 			for (int x = 0; x < breedte; x++) {
 				panels[y][x].werkBij();
