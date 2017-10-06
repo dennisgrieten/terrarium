@@ -37,6 +37,10 @@ public class Controller {
 		return Terrarium.INSTANCE.getAantalCarnivoren();
 	}
 
+	public int getAantalOmnivoren() {
+		return Terrarium.INSTANCE.getAantalOmnivoren();
+	}
+
 	public int getAantalPlanten() {
 		return Terrarium.INSTANCE.getAantalPlanten();
 	}

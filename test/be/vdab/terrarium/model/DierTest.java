@@ -100,6 +100,29 @@ public class DierTest {
 	}
 
 	@Test
+	public void testOmnivoorVrijen() {
+		System.out.println("testHerbivorenVrijen");
+		controller.initMatrix(6,6);
+
+		Omnivoor omnivoor = new Omnivoor();
+
+		controller.plaatsOrganisme(omnivoor, 4, 2);
+		controller.plaatsOrganisme(new Omnivoor(), 4, 3);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(2, controller.getAantalOmnivoren());
+
+		omnivoor.ageer();
+		Terrarium.INSTANCE.dagActies();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(3, controller.getAantalOmnivoren());
+
+	}
+
+	@Test
 	public void testBeweegNaarRechts() {
 		System.out.println("testBeweegNaarRechts");
         controller.initMatrix(6,6);
