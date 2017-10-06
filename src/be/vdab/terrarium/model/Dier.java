@@ -72,6 +72,7 @@ public abstract class Dier extends Organisme {
             this.setHeeftGeageerd(true);
         } else if (this.getLevenskracht() < tegenstander.getLevenskracht()) {
             tegenstander.addLevenskracht(this.getLevenskracht());
+            this.setHeeftGeageerd(true);
             this.sterf();
         }
     }

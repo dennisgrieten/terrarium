@@ -313,7 +313,7 @@ public class DierTest {
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
 		Cel celZwak = carnivoorZwak.getCel();
-		carnivoorZwak.vecht();
+		controller.dagActies();
 
 		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
 
