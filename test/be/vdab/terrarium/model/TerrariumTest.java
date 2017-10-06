@@ -13,8 +13,9 @@ public class TerrariumTest {
 	@Before
 	public void before() {
 		controller = new Controller();
+		// testen kunnen falen als parameters wijzigen
 		controller.initMatrix(6,6);
-		controller.initStartOrganismen(4,2,5,3);
+		controller.initStartOrganismen(4,1,5,3);
 	}
 
 	@Test
@@ -35,8 +36,23 @@ public class TerrariumTest {
 	@Test
 	public void isValideAantalOrganismen() {
 		assertEquals(true, controller.getTerrarium().isValideAantalOrganismen(2,2,2));
-		assertEquals(false , controller.getTerrarium().isValideAantalOrganismen(1,1,1));
-		assertEquals(false , controller.getTerrarium().isValideAantalOrganismen(20,20,11));
+
+		boolean thrown = false;
+		try {
+			controller.getTerrarium().isValideAantalOrganismen(1,1,1);
+		} catch (IllegalArgumentException ex) {
+			thrown = true;
+		}
+		assertTrue(thrown);
+
+		thrown = false;
+		try {
+			controller.getTerrarium().isValideAantalOrganismen(20,20,11);
+		} catch (IllegalArgumentException ex) {
+			thrown = true;
+		}
+
+		assertTrue(thrown);
 	}
 
 	@Test
