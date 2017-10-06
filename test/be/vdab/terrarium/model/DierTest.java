@@ -55,6 +55,27 @@ public class DierTest {
 
 	}
 
+	public void testOmnivoorEetHerbivoor() {
+		System.out.println("testCarnivoorEetHerbivoor");
+		controller.initMatrix(6,6);
+		Carnivoor carnivoor = new Carnivoor();
+
+		controller.plaatsOrganisme(carnivoor, 0, 0);
+		controller.plaatsOrganisme(new Herbivoor(), 0, 1);
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+		assertEquals(1, controller.getAantalCarnivoren());
+		assertEquals(1, controller.getAantalHerbivoren());
+
+		carnivoor.ageer();
+
+		System.out.println(Console.getStringRepresentation(controller.getTerrarium()));
+
+		assertEquals(1, controller.getAantalCarnivoren());
+		assertEquals(0, controller.getAantalHerbivoren());
+
+	}
+
 	@Test
 	public void testHerbivorenVrijen() {
 		System.out.println("testHerbivorenVrijen");

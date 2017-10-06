@@ -1,5 +1,7 @@
 package be.vdab.terrarium.model;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 public abstract class Organisme {
 
     private static int count;
@@ -8,9 +10,9 @@ public abstract class Organisme {
     private int levenskracht;
     private Cel cel = null; // pointer naar de cel waar het organisme zich in bevindt
 
-    public Organisme() {
+    public Organisme(int levenskracht) {
         id = count++;
-        setLevenskracht(1);
+        setLevenskracht(levenskracht);
     }
 
     public int getId() {
