@@ -68,7 +68,8 @@ public abstract class Organisme {
     }
 
     public Organisme getLinkerBuur() {
-        return getLinkerBuurCel().getOrganisme();
+        Cel buurCel = getLinkerBuurCel();
+        return buurCel == null ? null : buurCel.getOrganisme();
     }
 
     public Cel getBovenBuurCel() {
@@ -82,7 +83,8 @@ public abstract class Organisme {
     }
 
     public Organisme getBovenBuur() {
-        return getBovenBuurCel().getOrganisme();
+        Cel buurCel = getBovenBuurCel();
+        return buurCel == null ? null : buurCel.getOrganisme();
     }
 
     public Cel getOnderBuurCel() {
@@ -96,7 +98,8 @@ public abstract class Organisme {
     }
 
     public Organisme getOnderBuur() {
-        return getBovenBuurCel().getOrganisme();
+        Cel buurCel = getOnderBuurCel();
+        return buurCel == null ? null : buurCel.getOrganisme();
     }
 
     public void addLevenskracht(int kracht) {
