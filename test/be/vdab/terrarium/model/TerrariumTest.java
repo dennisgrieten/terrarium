@@ -60,5 +60,6 @@ public class TerrariumTest {
 	@Test
 	public void isValideAantalNieuwePlanten() throws Exception {
 		assertEquals(true, controller.getTerrarium().isValideAantalNieuwePlanten(1));
+		assertEquals(false, controller.getTerrarium().isValideAantalNieuwePlanten(2));
 	}
 }
