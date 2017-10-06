@@ -35,8 +35,23 @@ public class TerrariumTest {
 	@Test
 	public void isValideAantalOrganismen() {
 		assertEquals(true, controller.getTerrarium().isValideAantalOrganismen(2,2,2));
-		assertEquals(false , controller.getTerrarium().isValideAantalOrganismen(1,1,1));
-		assertEquals(false , controller.getTerrarium().isValideAantalOrganismen(20,20,11));
+
+		boolean thrown = false;
+		try {
+			controller.getTerrarium().isValideAantalOrganismen(1,1,1);
+		} catch (IllegalArgumentException ex) {
+			thrown = true;
+		}
+		assertTrue(thrown);
+
+		thrown = false;
+		try {
+			controller.getTerrarium().isValideAantalOrganismen(20,20,11);
+		} catch (IllegalArgumentException ex) {
+			thrown = true;
+		}
+
+		assertTrue(thrown);
 	}
 
 	@Test
