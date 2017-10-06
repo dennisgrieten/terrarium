@@ -6,17 +6,9 @@ public abstract class Dier extends Organisme {
 	private boolean heeftGeageerd;
 
 	public Dier() {
-		super(1);
 		this.heeftGeageerd = false;
 	}
 
-	public Dier(int levenskracht) {
-		super(levenskracht);
-		this.heeftGeageerd = false;
-	}
-
-	
-	
 	public boolean heeftGeageerd() {
 		return heeftGeageerd;
 	}

@@ -36,8 +36,8 @@ public class OrganismeIcon extends ImageIcon {
 		super.paintIcon(c, g, x, y);
 		g.setColor(Color.BLACK);
 		if (organisme != null) {
-			g.setColor(Color.BLUE);
-			g.drawString(organisme.getId() + ": " + organisme.getLevenskracht(), 1, 1 + g.getFont().getSize());
+			g.setColor(Color.BLACK);
+			g.drawString("" + organisme.getLevenskracht(), 1, 1 + g.getFont().getSize());
 		}
 	}
 

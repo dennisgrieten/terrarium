@@ -1,20 +1,27 @@
 package be.vdab.terrarium.model;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 import be.vdab.terrarium.controller.Controller;
+import org.junit.Before;
+import org.junit.Test;
+
+import be.vdab.terrarium.view.console.Console;
 
 public class NieuwePlantenTest {
 
-    @Test
-    public void getAantalPlantenIs6NaToevoegenNieuwePlanten() {
-    	Controller controller = new Controller();
+    @Before
+    public void before() {
+        Controller controller = new Controller();
         controller.initMatrix(10, 10);
         controller.initStartOrganismen(4,2,5,3);
-        controller.voegNieuwePlantenToe();
-        assertEquals(6, controller.getAantalPlanten());
+        System.out.println(Console.getStringRepresentation(Terrarium.INSTANCE));
+    }
+
+    @Test
+    public void getAantalPlantenIs6NaToevoegenNieuwePlanten() {
+        Terrarium.INSTANCE.voegNieuwePlantenToe();
+        assertEquals(6, Terrarium.INSTANCE.getAantalPlanten());
     }
 
 }

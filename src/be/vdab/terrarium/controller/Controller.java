@@ -56,8 +56,4 @@ public class Controller {
 	public boolean isValideAantalNieuwePlanten(int planten) {
 		return getTerrarium().isValideAantalNieuwePlanten(planten);
 	}
-
-	public void voegNieuwePlantenToe() {
-		getTerrarium().voegNieuwePlantenToe();
-	}
 }
