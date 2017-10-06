@@ -204,7 +204,7 @@ public enum Terrarium {
     }
 
     public boolean isValideBreedte(int hoogte, int breedte) {
-        return hoogte >= breedte && breedte >= 6;
+        return isValideHoogte(hoogte) && hoogte >= breedte && breedte >= 6;
     }
 
     public boolean isValideAantalOrganismen(int planten, int herbivoren, int carnivoren) {
@@ -216,10 +216,20 @@ public enum Terrarium {
                 (planten + herbivoren + carnivoren) < ((hoogte * breedte) / 2)) {
             return true;
         }
+        if (planten < minimum) {
+            throw new IllegalArgumentException("foutieve aantal planten");
+        }
+        if (herbivoren < minimum) {
+            throw new IllegalArgumentException("foutieve aantal herbivoren");
+        }
+        if (carnivoren < minimum) {
+            throw new IllegalArgumentException("foutieve aantal carnivoren");
+        }
+
         return false;
     }
 
     public boolean isValideAantalNieuwePlanten(int planten) {
-        return planten > 0 && planten <= ((hoogte * breedte) * 0.05);
+        return planten > 0 && planten <= (int) Math.floor((hoogte * breedte) * 0.05);
     }
 }
